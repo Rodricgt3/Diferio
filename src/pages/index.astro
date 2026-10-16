@@ -186,21 +186,8 @@ const concepts = [
         <div class="gallery" aria-label="Exploraciones gráficas originales">
           <div class="gallery-track">
             {[...heroGalleryItems, ...heroGalleryItems].map((item, i) => (
-              <div class={`tile tile-${i % 4} ${item.image ? 'tile-has-image' : ''}`}>
-                {item.image ? (
-                  <>
-                    <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />
-                    <div class="tile-overlay">
-                      <span>d.</span>
-                      <small>{item.name}</small>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <span>d.</span>
-                    <small>{item.name}</small>
-                  </>
-                )}
+              <div class={`tile tile-${i % 4} tile-has-image`}>
+                <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />
               </div>
             ))}
           </div>
