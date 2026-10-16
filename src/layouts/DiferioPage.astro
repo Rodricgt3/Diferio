@@ -1,0 +1,81 @@
+---
+import '../styles/reference.css';
+import '../styles/diferio.css';
+import { resolvePath } from '../utils/paths';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activeNav?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const {
+  title = 'diferio. — Creative Technology Company',
+  description = 'Diseño, software y comercio. Experiencias Shopify, sitios web y aplicaciones a medida para empresas en México.',
+  ogTitle = 'diferio. — Ordinary isn\'t enough.',
+  ogDescription = 'Diseño, software y comercio para hacer que tu negocio se distinga.'
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={ogTitle} />
+  <meta property="og:description" content={ogDescription} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23151515'/><text x='50' y='68' font-size='56' font-family='Arial,sans-serif' font-weight='bold' fill='%23d8ff60' text-anchor='middle'>d.</text></svg>" />
+</head>
+<body>
+  <a class="skip" href="#main">Ir al contenido</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="cover"></div>
+      <div class="identity">
+        <a href={resolvePath('/')} class="avatar" style="text-decoration:none; color:inherit;">d.</a>
+        <div>
+          <a href={resolvePath('/')} style="text-decoration:none; color:inherit;"><strong>diferio.</strong></a>
+          <small>Creative Technology Company</small>
+        </div>
+      </div>
+      <p class="intro">Creamos experiencias digitales, comercio y software que hacen que los negocios se distingan.</p>
+      <nav aria-label="Principal">
+        <a href={resolvePath('/')}>♧ &nbsp; Nosotros</a>
+        <a href={resolvePath('/#services')}>▣ &nbsp; Servicios</a>
+        <a href={resolvePath('/#works')}>↗ &nbsp; Proyectos</a>
+        <a href={resolvePath('/#process')}>▤ &nbsp; Proceso</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <p>DESIGN / SOFTWARE / COMMERCE</p>
+        <a class="button" href={resolvePath('/start/')}>Iniciar un proyecto ↗</a>
+      </div>
+    </aside>
+
+    <main id="main">
+      <header>
+        <div class="status">
+          <b>d.</b>
+          <span>diferio.</span>
+          <span><i></i> Nuevos proyectos</span>
+        </div>
+        <p>Desde México<br/><strong>Para tu negocio</strong></p>
+      </header>
+
+      <slot />
+
+      <footer>
+        <strong>diferio.</strong>
+        <p>Design / Software / Commerce</p>
+        <a href="#main">Volver arriba ↑</a>
+        <small>© {currentYear} DIFERIO</small>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

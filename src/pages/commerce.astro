@@ -1,0 +1,529 @@
+---
+import DiferioPage from '../layouts/DiferioPage.astro';
+import { resolvePath } from '../utils/paths';
+
+const featuredProduct = {
+  id: 'm-01',
+  name: 'Silla Colapsable M-01',
+  subtitle: 'Aluminio anodizado & lona encerada',
+  price: 4800,
+  priceFormatted: '$4,800 MXN',
+  sku: 'DIF-M01-GRA',
+  badge: 'Edición 2026',
+  stock: 3,
+  description: 'Estructura ultraligera de perfil extruido en frío, diseñada para desmontaje completo sin herramientas. Superficie textil con tratamiento hidrófugo de alta densidad.',
+  variants: [
+    { id: 'grafito', name: 'Grafito Mate', hex: '#222222', priceMod: 0, skuMod: 'GRA' },
+    { id: 'aluminio', name: 'Aluminio Crudo', hex: '#d4d4d4', priceMod: 400, skuMod: 'ALU' },
+    { id: 'oliva', name: 'Oliva Señal', hex: '#4f5945', priceMod: 650, skuMod: 'OLV' }
+  ],
+  editions: [
+    { id: 'std', label: 'Estándar', priceMod: 0 },
+    { id: 'ltd', label: 'Numerada de Taller (Ed. 15)', priceMod: 1400 }
+  ]
+};
+
+const catalog = [
+  featuredProduct,
+  {
+    id: 't-04',
+    name: 'Lámpara de Torsión T-04',
+    subtitle: 'Cerámica volcánica & difusión 2700K',
+    price: 3450,
+    priceFormatted: '$3,450 MXN',
+    sku: 'DIF-T04-CER',
+    badge: 'Pieza Unitaria',
+    stock: 5,
+    description: 'Cuerpo cerámico cocido a 1,200 °C con esmalte mate reflectante. Módulo LED regulable de alta fidelidad cromática (CRI > 95).'
+  },
+  {
+    id: 'v-02',
+    name: 'Recipiente Escultural V-02',
+    subtitle: 'Vidrio soplado artesanal ahumado',
+    price: 1950,
+    priceFormatted: '$1,950 MXN',
+    sku: 'DIF-V02-VID',
+    badge: 'Artesanía Técnica',
+    stock: 8,
+    description: 'Modelado manual por artesanos vidrieros en Guadalajara. Cada pieza presenta gradaciones únicas de tonalidad carbón.'
+  },
+  {
+    id: 'c-09',
+    name: 'Reloj Cronográfico C-09',
+    subtitle: 'Acero cepillado & movimiento continuo',
+    price: 5200,
+    priceFormatted: '$5,200 MXN',
+    sku: 'DIF-C09-ACE',
+    badge: 'Instrumento',
+    stock: 2,
+    description: 'Esfera minimalista mecanizada en monobloque de acero 316L. Mecanismo de barrido silencioso con reserva de marcha.'
+  }
+];
+---
+
+<DiferioPage
+  title="Shopify & E-Commerce — DIFERIO"
+  description="Diseño y desarrollo de tiendas Shopify de alta conversión. Catálogo editorial, PDP narrativo, checkout sin fricción y rendimiento técnico excepcional."
+  activeNav="commerce"
+>
+  <div class="page-banner">
+    <div class="breadcrumb">
+      <a href={resolvePath('/')}>DIFERIO</a>
+      <span>/</span>
+      <span>SERVICIOS</span>
+      <span>/</span>
+      <span>SHOPIFY & COMERCIO</span>
+    </div>
+    <div class="badge-demo">Demostración Conceptual Interactiva</div>
+  </div>
+
+  <section class="service-hero">
+    <span class="eyebrow">SERVICIO 01 / COMERCIO ELECTRÓNICO</span>
+    <h1>Commerce should<br/>work better.</h1>
+    <p class="lead">
+      Transformamos tiendas genéricas en experiencias editoriales donde cada interacción está pensada para seducir visualmente, acelerar la decisión y maximizar el ticket promedio en Shopify.
+    </p>
+    <div class="service-hero-actions">
+      <a class="cta-primary" href={resolvePath('/start/?service=commerce')}>
+        Quiero mejorar mi tienda <span>↗</span>
+      </a>
+      <a class="cta-secondary" href="#demo-pdp">
+        Probar experiencia interactiva ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- Interactive PDP & Cart Showcase -->
+  <section class="commerce-lab" id="demo-pdp">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow">DEMO INTERACTIVA EN VIVO</span>
+        <h2>Experiencia de Compra Fluida</h2>
+        <p>Interactúa con el configurador de producto, selecciona acabados y abre el carrito deslizable.</p>
+      </div>
+      <button class="cta-secondary" id="open-cart-trigger" type="button" aria-label="Abrir carrito">
+        <span>Carrito</span> (<span id="cart-counter-btn">1</span>) <span>🛒</span>
+      </button>
+    </div>
+
+    <div class="commerce-grid">
+      <!-- Product Stage -->
+      <div class="product-visual-stage" id="product-art-stage">
+        <span class="product-badge-corner" id="active-badge">Edición 2026</span>
+        <!-- Architectural SVG Sculpture of the Chair -->
+        <svg class="product-art-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visualizador arquitectónico de producto">
+          <rect width="400" height="400" rx="16" fill="transparent"/>
+          <!-- Grid accents -->
+          <line x1="40" y1="200" x2="360" y2="200" stroke="#dcd8cc" stroke-dasharray="3 3"/>
+          <line x1="200" y1="40" x2="200" y2="360" stroke="#dcd8cc" stroke-dasharray="3 3"/>
+          <circle cx="200" cy="200" r="140" stroke="#dedbd0" stroke-width="1.5"/>
+          
+          <!-- Chair Base Structure -->
+          <path id="chair-legs" d="M120 330L170 180M280 330L230 180M145 270L255 270" stroke="#151515" stroke-width="10" stroke-linecap="round"/>
+          <!-- Chair Backrest frame -->
+          <path id="chair-back" d="M160 80L240 80L230 180L170 180Z" fill="#2a2a2a" stroke="#151515" stroke-width="4"/>
+          <!-- Textile Seat Pillow -->
+          <rect id="chair-seat" x="140" y="170" width="120" height="40" rx="8" fill="#444444" stroke="#151515" stroke-width="4"/>
+          <!-- Detail Signal Stitching -->
+          <line x1="150" y1="190" x2="250" y2="190" stroke="#d8ff60" stroke-width="2" stroke-dasharray="4 4"/>
+          <circle cx="200" cy="130" r="12" fill="#d8ff60"/>
+        </svg>
+        <span class="product-sku-corner" id="active-sku">SKU: DIF-M01-GRA</span>
+      </div>
+
+      <!-- Configurator Controls -->
+      <div class="product-details">
+        <div class="product-meta-top">
+          <div>
+            <span class="eyebrow">ATELIER DIFERIO / N° 01</span>
+            <h3 id="product-title">Silla Colapsable M-01</h3>
+          </div>
+          <div class="product-price" id="product-price-display">$4,800 MXN</div>
+        </div>
+
+        <p class="product-description-text" id="product-desc-display">
+          Estructura ultraligera de perfil extruido en frío, diseñada para desmontaje completo sin herramientas. Superficie textil con tratamiento hidrófugo de alta densidad.
+        </p>
+
+        <!-- Color Swatch Picker -->
+        <div class="option-group">
+          <label>Acabado del Aluminio: <span id="selected-finish-name">Grafito Mate</span></label>
+          <div class="swatch-picker" role="radiogroup" aria-label="Seleccionar acabado">
+            {featuredProduct.variants.map((v, i) => (
+              <button
+                type="button"
+                class={`swatch-btn ${i === 0 ? 'active' : ''}`}
+                data-variant-id={v.id}
+                data-name={v.name}
+                data-hex={v.hex}
+                data-price-mod={v.priceMod}
+                data-sku-mod={v.skuMod}
+                aria-checked={i === 0 ? 'true' : 'false'}
+              >
+                <span class="dot" style={`background-color: ${v.hex}`}></span>
+                <span>{v.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Edition Selector -->
+        <div class="option-group">
+          <label>Edición de Taller: <span id="selected-edition-name">Estándar</span></label>
+          <div class="size-picker" role="radiogroup" aria-label="Seleccionar edición">
+            {featuredProduct.editions.map((ed, i) => (
+              <button
+                type="button"
+                class={`size-btn ${i === 0 ? 'active' : ''}`}
+                data-edition-id={ed.id}
+                data-label={ed.label}
+                data-price-mod={ed.priceMod}
+                aria-checked={i === 0 ? 'true' : 'false'}
+              >
+                {ed.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Add to cart bar -->
+        <div class="cart-action-bar">
+          <button class="add-to-cart-btn" id="add-to-cart-action" type="button">
+            <span>Agregar a la bolsa</span>
+            <span class="tag">1-Clic</span>
+          </button>
+        </div>
+
+        <div class="stock-indicator" id="stock-status">
+          3 piezas en existencia para entrega inmediata en México
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide Cart Drawer -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compra">
+    <div class="cart-drawer-header">
+      <h3>Bolsa de Compra <span class="cart-count-badge" id="drawer-count">1</span></h3>
+      <button class="close-cart-btn" id="close-cart-btn" type="button" aria-label="Cerrar bolsa">✕</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div class="cart-shipping-meter">
+        <div style="display:flex; justify-content:space-between; font-weight:600;">
+          <span>Envío nacional asegurado</span>
+          <span style="color:#2b7a24;">¡Gratis!</span>
+        </div>
+        <div class="shipping-bar">
+          <div class="shipping-progress"></div>
+        </div>
+      </div>
+
+      <div id="cart-items-container">
+        <!-- Default Cart Item -->
+        <div class="cart-item" data-cart-id="m-01-item">
+          <div class="cart-item-thumb">
+            <span style="font-family:var(--font-mono); font-size:12px; font-weight:700;">M-01</span>
+          </div>
+          <div class="cart-item-info">
+            <h4 class="cart-item-title" id="cart-item-name">Silla Colapsable M-01</h4>
+            <div class="cart-item-variant" id="cart-item-variant-desc">Grafito Mate · Estándar</div>
+            <div class="cart-item-bottom">
+              <div class="qty-control">
+                <button class="qty-btn" id="qty-minus" type="button">-</button>
+                <span class="qty-val" id="qty-number">1</span>
+                <button class="qty-btn" id="qty-plus" type="button">+</button>
+              </div>
+              <div style="font-weight:700; font-family:var(--font-mono);" id="cart-item-total">$4,800 MXN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-breakdown">
+        <div>
+          <span>Subtotal</span>
+          <span id="subtotal-val">$4,800 MXN</span>
+        </div>
+        <div>
+          <span>Envío asegurado DHL Express</span>
+          <span style="color:#2b7a24;">$0 MXN</span>
+        </div>
+        <div class="cart-total-row">
+          <span>Total Estimado</span>
+          <span id="total-val">$4,800 MXN</span>
+        </div>
+      </div>
+
+      <button class="checkout-btn" type="button" id="demo-checkout-btn">
+        <span>Proceder al Pago Seguro</span>
+        <span>🔒 ↗</span>
+      </button>
+      <p class="checkout-note">
+        Simulación interactiva — Demuestra la arquitectura Shopify Extensibility desarrollada por DIFERIO.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Editorial Catalog Grid -->
+  <section style="padding: 70px 48px; border-bottom: 1px solid #eee;">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow">CATÁLOGO EDITORIAL DE MUESTRA</span>
+        <h2>Colección Objets N° 01 – 04</h2>
+        <p>Composiciones visuales concebidas para elevar la percepción de valor y seducir al comprador exigente.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 30px;">
+      {catalog.map((item, idx) => (
+        <article style="background:#faf9f6; border:1px solid #e8e6df; border-radius:18px; padding:24px; display:flex; flex-direction:column; justify-content:space-between; gap:16px;">
+          <div style="background:#edebe4; border-radius:12px; height:180px; display:grid; place-items:center; position:relative;">
+            <span style="font-size:10px; font-family:var(--font-mono); position:absolute; top:12px; left:12px; background:#fff; padding:3px 8px; border-radius:4px;">
+              {item.badge}
+            </span>
+            <span style="font-size:36px; font-weight:800; font-family:var(--font-mono); color:#151515;">
+              0{idx + 1}
+            </span>
+          </div>
+          <div>
+            <span style="font-size:10px; font-family:var(--font-mono); color:#888;">{item.sku}</span>
+            <h3 style="font-size:18px; margin:6px 0 4px;">{item.name}</h3>
+            <p style="font-size:12px; color:#666; margin:0 0 12px; line-height:1.5;">{item.subtitle}</p>
+            <div style="font-size:16px; font-weight:700; font-family:var(--font-mono); color:#151515;">
+              {item.priceFormatted}
+            </div>
+          </div>
+          <button
+            type="button"
+            class="cta-secondary"
+            style="width:100%; justify-content:center; padding:10px; font-size:12px;"
+            onclick={`alert('En una tienda completa DIFERIO, este botón permite añadir la pieza 0${idx+1} al carrito al instante sin refrescar la página.')`}
+          >
+            Vista rápida +
+          </button>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Before / After UX Comparison -->
+  <section class="comparison-section">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow">DECISIONES DE CONVERSIÓN</span>
+        <h2>Tienda Tradicional vs. DIFERIO Commerce</h2>
+        <p>Por qué un diseño a medida no es solo estética: es la diferencia entre abandonar el carrito o completar la compra.</p>
+      </div>
+    </div>
+
+    <div class="comparison-grid">
+      <div class="compare-card bad">
+        <span class="compare-pill">Tienda Genérica / Template Común</span>
+        <h3>Fricción & Pérdida de Clientes</h3>
+        <ul class="compare-list">
+          <li><i>✕</i> <strong>Carga lenta (4.8s LCP):</strong> Sobrecargada con más de 25 aplicaciones y plugins innecesarios.</li>
+          <li><i>✕</i> <strong>PDP genérico y desorganizado:</strong> Texto plano amontonado que no responde objeciones ni justifica el precio.</li>
+          <li><i>✕</i> <strong>Navegación móvil incómoda:</strong> Menús desplegables fuera de la zona natural del pulgar.</li>
+          <li><i>✕</i> <strong>Checkout de múltiples pasos:</strong> 34% de abandono en móvil debido a formularios largos y saltos de página.</li>
+          <li><i>✕</i> <strong>Aspecto idéntico a la competencia:</strong> Plantillas predefinidas que diluyen la identidad de marca.</li>
+        </ul>
+      </div>
+
+      <div class="compare-card diferio-way">
+        <span class="compare-pill">DIFERIO Commerce Experience</span>
+        <h3>Velocidad, Retención & Margen</h3>
+        <ul class="compare-list">
+          <li><i>✓</i> <strong>Carga instantánea (&lt;0.9s LCP):</strong> Arquitectura limpia sin scripts redundantes ni librerías obsoletas.</li>
+          <li><i>✓</i> <strong>PDP Editorial y Narrativo:</strong> Guías visuales de tallas, variantes fluidas y storytelling de materiales.</li>
+          <li><i>✓</i> <strong>Carrito deslizable inteligente:</strong> Resumen sin abandonar la página, cálculo de envío gratis y upsells de 1 clic.</li>
+          <li><i>✓</i> <strong>Shopify Checkout Extensibility:</strong> Compra en 1 paso con Apple Pay, Kueski Pay y Mercado Pago integrados.</li>
+          <li><i>✓</i> <strong>Diferenciación radical:</strong> Tu marca se posiciona en un nivel premium inalcanzable para competidores estándar.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Journey Explanation -->
+  <section style="padding: 70px 48px; border-bottom: 1px solid #eee; background:#fff;">
+    <span class="eyebrow">ARQUITECTURA DE EMBUDO</span>
+    <h2 style="font-size:clamp(30px,3.5vw,52px); margin:12px 0 20px;">El viaje de compra sin obstáculos.</h2>
+    <p class="lead" style="color:#666; margin-bottom:40px;">
+      Diseñamos cada etapa del proceso de compra para eliminar la fricción mental del cliente y facilitar el pago inmediato.
+    </p>
+
+    <div class="journey-grid">
+      <div class="journey-step-card">
+        <span class="journey-number">FASE 01</span>
+        <h4>Micro-Decisión en PDP</h4>
+        <p>Variantes instantáneas sin recargas lentas. El cliente visualiza acabados y disponibilidad en tiempo real.</p>
+      </div>
+
+      <div class="journey-step-card">
+        <span class="journey-number">FASE 02</span>
+        <h4>Slide Cart Persuasivo</h4>
+        <p>Medidor dinámico de envío gratis y resumen transparente de impuestos que evita sorpresas de costo al final.</p>
+      </div>
+
+      <div class="journey-step-card">
+        <span class="journey-number">FASE 03</span>
+        <h4>Checkout 1-Page</h4>
+        <p>Autocompletado de direcciones postales de México y pago acelerado con billeteras biométricas móviles.</p>
+      </div>
+
+      <div class="journey-step-card">
+        <span class="journey-number">FASE 04</span>
+        <h4>Post-Compra & Fidelidad</h4>
+        <p>Página de agradecimiento interactiva con seguimiento de paquetería en vivo y recomendación de recompra.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+      <a class="cta-primary" href={resolvePath('/start/?service=commerce')} style="display:inline-flex;">
+        Quiero mejorar mi tienda <span>↗</span>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Client-side Interactive E-Commerce Experience
+    let basePrice = 4800;
+    let finishPrice = 0;
+    let editionPrice = 0;
+    let currentQty = 1;
+
+    const priceDisplay = document.getElementById('product-price-display');
+    const skuDisplay = document.getElementById('active-sku');
+    const finishNameDisplay = document.getElementById('selected-finish-name');
+    const editionNameDisplay = document.getElementById('selected-edition-name');
+    const chairBack = document.getElementById('chair-back');
+    const chairSeat = document.getElementById('chair-seat');
+
+    function updatePrice() {
+      const total = (basePrice + finishPrice + editionPrice);
+      if (priceDisplay) {
+        priceDisplay.textContent = `$${total.toLocaleString('es-MX')} MXN`;
+      }
+      updateCartTotals();
+    }
+
+    // Color swatches
+    const swatchBtns = document.querySelectorAll('.swatch-btn');
+    swatchBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        swatchBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-checked', 'true');
+
+        const name = btn.getAttribute('data-name') || '';
+        const hex = btn.getAttribute('data-hex') || '#222';
+        const priceMod = Number(btn.getAttribute('data-price-mod') || 0);
+        const skuMod = btn.getAttribute('data-sku-mod') || 'GRA';
+
+        if (finishNameDisplay) finishNameDisplay.textContent = name;
+        if (skuDisplay) skuDisplay.textContent = `SKU: DIF-M01-${skuMod}`;
+        if (chairBack) chairBack.setAttribute('fill', hex);
+        if (chairSeat) chairSeat.setAttribute('fill', hex === '#222222' ? '#3a3a3a' : hex);
+
+        finishPrice = priceMod;
+        updatePrice();
+      });
+    });
+
+    // Edition buttons
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    sizeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sizeBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-checked', 'true');
+
+        const label = btn.getAttribute('data-label') || '';
+        const priceMod = Number(btn.getAttribute('data-price-mod') || 0);
+
+        if (editionNameDisplay) editionNameDisplay.textContent = label;
+        editionPrice = priceMod;
+        updatePrice();
+      });
+    });
+
+    // Cart Drawer Controls
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const openCartBtn = document.getElementById('open-cart-trigger');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const addToCartAction = document.getElementById('add-to-cart-action');
+
+    function openCart() {
+      cartDrawer?.classList.add('open');
+      cartBackdrop?.classList.add('open');
+    }
+
+    function closeCart() {
+      cartDrawer?.classList.remove('open');
+      cartBackdrop?.classList.remove('open');
+    }
+
+    openCartBtn?.addEventListener('click', openCart);
+    closeCartBtn?.addEventListener('click', closeCart);
+    cartBackdrop?.addEventListener('click', closeCart);
+
+    addToCartAction?.addEventListener('click', () => {
+      const finish = finishNameDisplay?.textContent || 'Grafito';
+      const edition = editionNameDisplay?.textContent || 'Estándar';
+      const variantDesc = document.getElementById('cart-item-variant-desc');
+      if (variantDesc) {
+        variantDesc.textContent = `${finish} · ${edition}`;
+      }
+      openCart();
+    });
+
+    // Quantity controls
+    const qtyNumber = document.getElementById('qty-number');
+    const qtyMinus = document.getElementById('qty-minus');
+    const qtyPlus = document.getElementById('qty-plus');
+    const cartItemTotal = document.getElementById('cart-item-total');
+    const subtotalVal = document.getElementById('subtotal-val');
+    const totalVal = document.getElementById('total-val');
+    const btnCount = document.getElementById('cart-counter-btn');
+    const drawerCount = document.getElementById('drawer-count');
+
+    function updateCartTotals() {
+      const unit = (basePrice + finishPrice + editionPrice);
+      const sum = unit * currentQty;
+      const formatted = `$${sum.toLocaleString('es-MX')} MXN`;
+
+      if (cartItemTotal) cartItemTotal.textContent = formatted;
+      if (subtotalVal) subtotalVal.textContent = formatted;
+      if (totalVal) totalVal.textContent = formatted;
+      if (qtyNumber) qtyNumber.textContent = String(currentQty);
+      if (btnCount) btnCount.textContent = String(currentQty);
+      if (drawerCount) drawerCount.textContent = String(currentQty);
+    }
+
+    qtyPlus?.addEventListener('click', () => {
+      currentQty++;
+      updateCartTotals();
+    });
+
+    qtyMinus?.addEventListener('click', () => {
+      if (currentQty > 1) {
+        currentQty--;
+        updateCartTotals();
+      }
+    });
+
+    document.getElementById('demo-checkout-btn')?.addEventListener('click', () => {
+      alert('¡Demostración de checkout! En tu tienda Shopify conectada por DIFERIO, este botón traslada al cliente directamente al checkout nativo con 1-tap Apple Pay / Kueski Pay.');
+    });
+  </script>
+</DiferioPage>

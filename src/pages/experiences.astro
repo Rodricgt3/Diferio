@@ -1,0 +1,282 @@
+---
+import DiferioPage from '../layouts/DiferioPage.astro';
+import { resolvePath } from '../utils/paths';
+
+const projects = [
+  {
+    num: '01',
+    title: 'Kinetic Monolith',
+    category: 'Arquitectura & Escultura Digital',
+    year: '2026',
+    desc: 'Exploración espacial donde la tipografía brutalista interactúa con la aceleración física del scroll.',
+    bg: '#252525'
+  },
+  {
+    num: '02',
+    title: 'Aura Light Lab',
+    category: 'Luminotecnia & Diseño de Interiores',
+    year: '2026',
+    desc: 'Experiencia inmersiva con renderizado WebGL ligero y transición cromática continua en función de la hora del día.',
+    bg: '#1c221e'
+  },
+  {
+    num: '03',
+    title: 'Vectores de Silicio',
+    category: 'Ingeniería de Materiales',
+    year: '2025',
+    desc: 'Publicación editorial interactiva con diagramas cinéticos en SVG y lectura adaptada a pantallas táctiles de alta densidad.',
+    bg: '#26211c'
+  }
+];
+---
+
+<DiferioPage
+  title="Diseño Web & Experiencias Digitales — DIFERIO"
+  description="Frontend de clase mundial, tipografía monumental y narrativa interactiva. Sitios web construidos para causar una impresión imborrable y convertir visitantes en creyentes."
+  activeNav="experiences"
+>
+  <div class="page-banner">
+    <div class="breadcrumb">
+      <a href={resolvePath('/')}>DIFERIO</a>
+      <span>/</span>
+      <span>SERVICIOS</span>
+      <span>/</span>
+      <span>EXPERIENCIAS WEB</span>
+    </div>
+    <div class="badge-demo">Laboratorio de Frontend & Diseño Editorial</div>
+  </div>
+
+  <section class="service-hero">
+    <span class="eyebrow">SERVICIO 02 / EXPERIENCIAS DIGITALES</span>
+    <h1>Software should<br/>feel different.</h1>
+    <p class="lead">
+      El diseño web no consiste en acomodar bloques prefabricados en una plantilla genérica. Construimos experiencias con ritmo, tensión tipográfica, micro-interacciones precisas y un estándar visual que ninguna agencia convencional puede replicar.
+    </p>
+    <div class="service-hero-actions">
+      <a class="cta-primary" href={resolvePath('/start/?service=experiences')}>
+        Quiero una web diferente <span>↗</span>
+      </a>
+      <a class="cta-secondary" href="#experiences-lab">
+        Explorar laboratorio interactivo ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- Interactive Experiences Lab -->
+  <section class="experiences-lab" id="experiences-lab">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow" style="color:var(--color-signal);">DEMOSTRACIÓN DE INGENIERÍA FRONTEND</span>
+        <h2>Laboratorio Cinético & Dual-View</h2>
+        <p>Alterna entre la vista editorial terminada y el modo inspección de arquitectura de software.</p>
+      </div>
+    </div>
+
+    <!-- View Switcher -->
+    <div class="view-switcher-bar">
+      <div class="view-modes" role="tablist">
+        <button class="mode-tab active" id="tab-editorial" type="button" role="tab" aria-selected="true">
+          Modo Editorial
+        </button>
+        <button class="mode-tab" id="tab-blueprint" type="button" role="tab" aria-selected="false">
+          Modo Blueprint / Inspección Técnica
+        </button>
+      </div>
+
+      <div class="telemetry-pill">
+        <span>FPS: <i>60.0</i></span>
+        <span>LCP: <i>0.62s</i></span>
+        <span>Retícula: <i>12 Col Fluidas</i></span>
+      </div>
+    </div>
+
+    <!-- Kinetic Artboard Stage -->
+    <div class="kinetic-artboard" id="kinetic-stage">
+      <!-- Blueprint Technical Overlay -->
+      <div class="blueprint-overlay">
+        <div style="display:flex; justify-content:space-between;">
+          <span>[SYSTEM: DIFERIO-GRID-12]</span>
+          <span>[CONTAINER: 100% FLUID / MAX 1500PX]</span>
+          <span>[LAYER: Z-INDEX 10]</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; border-top:1px dashed var(--color-signal); padding-top:6px;">
+          <span>--font-lead: clamp(48px, 7vw, 110px)</span>
+          <span>--tracking: <span id="telemetry-tracking">-0.05em</span></span>
+          <span>--motion: cubic-bezier(0.16, 1, 0.3, 1)</span>
+        </div>
+      </div>
+
+      <div class="artboard-top">
+        <div class="artboard-brand-mark">
+          STUDIO V <span>/ ARCH</span>
+        </div>
+        <div class="artboard-meta">
+          <span>COORDINATES</span><br/>
+          <strong>19.4326° N, 99.1332° W</strong>
+        </div>
+      </div>
+
+      <div class="kinetic-statement">
+        <span style="font-size:11px; font-family:var(--font-mono); color:var(--color-signal); letter-spacing:0.18em; text-transform:uppercase;">
+          MANIFIESTO VISUAL 2026
+        </span>
+        <div class="kinetic-h1" id="kinetic-title">
+          FORM <span class="outline">FOLLOWS</span><br/>
+          FEELING.
+        </div>
+      </div>
+
+      <!-- Live Sliders -->
+      <div class="kinetic-controls">
+        <div class="control-slider">
+          <label for="tracking-slider">Interletraje (Tracking):</label>
+          <input type="range" id="tracking-slider" min="-8" max="15" value="-5" step="1"/>
+          <span id="tracking-val">-0.05em</span>
+        </div>
+        <div class="control-slider">
+          <label for="stroke-slider">Grosor de Trazo:</label>
+          <input type="range" id="stroke-slider" min="1" max="4" value="1" step="0.5"/>
+          <span id="stroke-val">1.0px</span>
+        </div>
+        <div class="control-slider">
+          <label for="scale-slider">Escala:</label>
+          <input type="range" id="scale-slider" min="80" max="120" value="100" step="2"/>
+          <span id="scale-val">100%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Showcase Cards -->
+  <section style="padding: 70px 48px; border-bottom: 1px solid #eee; background:#fff;">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow">DISEÑO CON PROPÓSITO</span>
+        <h2>Narrativa Visual & Micro-Interacciones</h2>
+        <p>Tres aproximaciones donde la identidad de marca se convierte en un activo de conversión digital.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 36px;">
+      {projects.map((proj) => (
+        <article style="background:#faf9f6; border:1px solid #e5e3da; border-radius:20px; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style={`height: 220px; background: ${proj.bg}; display:grid; place-items:center; position:relative; overflow:hidden; color:#fff;`}>
+            <span style="font-family:var(--font-mono); font-size:10px; color:#888; position:absolute; top:16px; left:16px;">
+              PROYECTO /{proj.num}
+            </span>
+            <span style="font-size:48px; font-weight:800; font-family:var(--font-mono); letter-spacing:-0.08em;">
+              {proj.num}
+            </span>
+            <span style="position:absolute; bottom:14px; right:16px; font-family:var(--font-mono); font-size:10px; color:var(--color-signal);">
+              {proj.year}
+            </span>
+          </div>
+
+          <div style="padding: 24px; display:flex; flex-direction:column; gap:10px;">
+            <span style="font-size:11px; font-family:var(--font-mono); color:#777; text-transform:uppercase;">
+              {proj.category}
+            </span>
+            <h3 style="font-size:22px; margin:0;">{proj.title}</h3>
+            <p style="font-size:13px; line-height:1.6; color:#666; margin:0;">{proj.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Principles of Web Design -->
+  <section style="padding: 70px 48px; border-bottom: 1px solid #eee; background:#faf9f6;">
+    <span class="eyebrow">ESTÁNDAR TÉCNICO DIFERIO</span>
+    <h2 style="font-size:clamp(30px,3.5vw,52px); margin:12px 0 20px;">Por qué nuestras webs convierten.</h2>
+    <p class="lead" style="color:#666; max-width:700px; margin-bottom:40px;">
+      Combinamos belleza de galería con ingeniería de sistemas: cada micro-animación tiene un propósito y cada elemento respeta la accesibilidad y velocidad.
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+      <div style="background:#fff; border:1px solid #e6e4dc; border-radius:16px; padding:24px;">
+        <h4 style="font-size:18px; margin:0 0 8px;">Tipografía Escalable Fluida</h4>
+        <p style="font-size:13px; color:#666; line-height:1.6; margin:0;">
+          Escala tipográfica matemática calculada con <code>clamp()</code> que asegura legibilidad milimétrica tanto en pantallas retina como en dispositivos móviles compactos.
+        </p>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e6e4dc; border-radius:16px; padding:24px;">
+        <h4 style="font-size:18px; margin:0 0 8px;">Cero JavaScript Innecesario</h4>
+        <p style="font-size:13px; color:#666; line-height:1.6; margin:0;">
+          Aprovechamos CSS moderno, Web Animations API y renderizado estático con Astro para lograr tiempos de carga instantáneos sin librerías pesadas.
+        </p>
+      </div>
+
+      <div style="background:#fff; border:1px solid #e6e4dc; border-radius:16px; padding:24px;">
+        <h4 style="font-size:18px; margin:0 0 8px;">Accesibilidad & Inclusión</h4>
+        <p style="font-size:13px; color:#666; line-height:1.6; margin:0;">
+          Respeto estricto a <code>prefers-reduced-motion</code>, contraste WCAG AA validado, navegación fluida por teclado y marcado semántico HTML5.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+      <a class="cta-primary" href={resolvePath('/start/?service=experiences')} style="display:inline-flex;">
+        Quiero una web diferente <span>↗</span>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Interactive View Switcher & Kinetic Sliders
+    const tabEditorial = document.getElementById('tab-editorial');
+    const tabBlueprint = document.getElementById('tab-blueprint');
+    const kineticStage = document.getElementById('kinetic-stage');
+    const kineticTitle = document.getElementById('kinetic-title');
+
+    tabEditorial?.addEventListener('click', () => {
+      tabEditorial.classList.add('active');
+      tabBlueprint?.classList.remove('active');
+      tabEditorial.setAttribute('aria-selected', 'true');
+      tabBlueprint?.setAttribute('aria-selected', 'false');
+      kineticStage?.classList.remove('blueprint-active');
+    });
+
+    tabBlueprint?.addEventListener('click', () => {
+      tabBlueprint.classList.add('active');
+      tabEditorial?.classList.remove('active');
+      tabBlueprint.setAttribute('aria-selected', 'true');
+      tabEditorial?.setAttribute('aria-selected', 'false');
+      kineticStage?.classList.add('blueprint-active');
+    });
+
+    // Sliders
+    const trackingSlider = document.getElementById('tracking-slider') as HTMLInputElement;
+    const strokeSlider = document.getElementById('stroke-slider') as HTMLInputElement;
+    const scaleSlider = document.getElementById('scale-slider') as HTMLInputElement;
+
+    const trackingVal = document.getElementById('tracking-val');
+    const strokeVal = document.getElementById('stroke-val');
+    const scaleVal = document.getElementById('scale-val');
+    const telemetryTracking = document.getElementById('telemetry-tracking');
+
+    trackingSlider?.addEventListener('input', () => {
+      const val = (Number(trackingSlider.value) / 100);
+      const str = `${val}em`;
+      if (kineticTitle) kineticTitle.style.letterSpacing = str;
+      if (trackingVal) trackingVal.textContent = str;
+      if (telemetryTracking) telemetryTracking.textContent = str;
+    });
+
+    strokeSlider?.addEventListener('input', () => {
+      const val = strokeSlider.value;
+      const str = `${val}px`;
+      const outlineEl = kineticTitle?.querySelector('.outline') as HTMLElement;
+      if (outlineEl) {
+        outlineEl.style.webkitTextStroke = `${str} rgba(255, 255, 255, 0.4)`;
+      }
+      if (strokeVal) strokeVal.textContent = str;
+    });
+
+    scaleSlider?.addEventListener('input', () => {
+      const val = Number(scaleSlider.value) / 100;
+      if (kineticTitle) kineticTitle.style.transform = `scale(${val})`;
+      if (scaleVal) scaleVal.textContent = `${scaleSlider.value}%`;
+    });
+  </script>
+</DiferioPage>

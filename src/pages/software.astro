@@ -1,0 +1,402 @@
+---
+import DiferioPage from '../layouts/DiferioPage.astro';
+import { resolvePath } from '../utils/paths';
+
+const orders = [
+  { id: 'ORD-8942', client: 'Artesanías del Norte', amount: '$42,500 MXN', status: 'success', label: 'Completado', date: 'Hoy, 14:22', items: '12 paletas de exportación' },
+  { id: 'ORD-8941', client: 'Estudio Lumina CDMX', amount: '$18,350 MXN', status: 'in-progress', label: 'En Proceso', date: 'Hoy, 11:05', items: 'Lote prototipos T-04' },
+  { id: 'ORD-8940', client: 'Distribuidora Bajío', amount: '$89,000 MXN', status: 'success', label: 'Completado', date: 'Ayer, 18:40', items: 'Suministro mayorista M-01' },
+  { id: 'ORD-8939', client: 'Galería Bauhaus Sur', amount: '$7,200 MXN', status: 'pending', label: 'Pendiente', date: 'Ayer, 16:15', items: '2 esculturas V-02' },
+  { id: 'ORD-8938', client: 'Logística Transfronteriza', amount: '$112,400 MXN', status: 'success', label: 'Completado', date: '14 Oct, 09:30', items: 'Integración API personalizada' },
+  { id: 'ORD-8937', client: 'Boutique San Pedro', amount: '$24,800 MXN', status: 'in-progress', label: 'En Proceso', date: '13 Oct, 17:50', items: 'Configuración catálogo B2B' }
+];
+
+const capabilities = [
+  {
+    icon: '⬡',
+    title: 'Portales de Negocio & B2B',
+    desc: 'Catálogos privados con precios personalizados por distribuidor, pedidos masivos por lote y facturación electrónica CFDI 4.0 automatizada.'
+  },
+  {
+    icon: '⚙',
+    title: 'Herramientas Internas & Backoffice',
+    desc: 'Sistemas a medida para reemplazar hojas de cálculo caóticas. Control de almacenes, flujos de aprobación y asignación de tareas operativas.'
+  },
+  {
+    icon: '📊',
+    title: 'Dashboards de Gestión en Tiempo Real',
+    desc: 'Consolidación de métricas de ventas, inventario multicanal y analítica en un panel único, rápido e intuitivo para la toma de decisiones.'
+  },
+  {
+    icon: '🚀',
+    title: 'Desarrollo de MVP para SaaS',
+    desc: 'Desde la concepción de producto y arquitectura en TypeScript hasta el despliegue escalable en la nube con cobro recurrente integrado.'
+  }
+];
+---
+
+<DiferioPage
+  title="Software a Medida & Aplicaciones Web — DIFERIO"
+  description="Desarrollo de aplicaciones web de alto rendimiento, portales de clientes y dashboards SaaS para empresas que necesitan tecnología confiable y escalable."
+  activeNav="software"
+>
+  <div class="page-banner">
+    <div class="breadcrumb">
+      <a href={resolvePath('/')}>DIFERIO</a>
+      <span>/</span>
+      <span>SERVICIOS</span>
+      <span>/</span>
+      <span>SOFTWARE A MEDIDA</span>
+    </div>
+    <div class="badge-demo">Demostración Interactiva de Plataforma</div>
+  </div>
+
+  <section class="service-hero">
+    <span class="eyebrow">SERVICIO 03 / INGENIERÍA DE SOFTWARE</span>
+    <h1>Custom software<br/>that scales with you.</h1>
+    <p class="lead">
+      Creamos plataformas web, herramientas internas y productos SaaS con arquitectura moderna en TypeScript. Soluciones robustas, seguras y rápidas diseñadas para automatizar procesos y dar certeza a tu negocio.
+    </p>
+    <div class="service-hero-actions">
+      <a class="cta-primary" href={resolvePath('/start/?service=software')}>
+        Quiero desarrollar mi plataforma <span>↗</span>
+      </a>
+      <a class="cta-secondary" href="#software-demo">
+        Probar dashboard interactivo ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- Interactive Dashboard Demo -->
+  <section class="software-lab" id="software-demo">
+    <div class="interactive-box-header">
+      <div>
+        <span class="eyebrow">PLATAFORMA DIFERIO PULSE / DEMO OPERATIVA</span>
+        <h2>Panel de Gestión Empresarial</h2>
+        <p>Prueba los filtros, la búsqueda en tiempo real y el explorador de métricas en este entorno simulado.</p>
+      </div>
+    </div>
+
+    <!-- Dashboard App Window -->
+    <div class="dashboard-window">
+      <!-- App Sidebar -->
+      <aside class="dash-sidebar">
+        <div>
+          <div class="dash-brand">
+            <span style="font-size:18px; font-weight:800; color:var(--color-signal);">PULSE</span>
+            <span class="badge">OS v2.4</span>
+          </div>
+
+          <nav class="dash-nav">
+            <button type="button" class="dash-nav-btn active" data-nav="overview">
+              <span>📊</span> Resumen Operativo
+            </button>
+            <button type="button" class="dash-nav-btn" data-nav="orders">
+              <span>📦</span> Órdenes & Envíos
+            </button>
+            <button type="button" class="dash-nav-btn" data-nav="clients">
+              <span>👥</span> Directorio de Clientes
+            </button>
+            <button type="button" class="dash-nav-btn" data-nav="analytics">
+              <span>📈</span> Finanzas & CFDI
+            </button>
+            <button type="button" class="dash-nav-btn" data-nav="settings">
+              <span>⚙</span> Configuración API
+            </button>
+          </nav>
+        </div>
+
+        <div class="dash-footer">
+          <div>Tenant: <strong>Grupo Norte MX</strong></div>
+          <div style="font-size:10px; color:#888; margin-top:4px;">Servidor: us-east (14ms)</div>
+        </div>
+      </aside>
+
+      <!-- App Main Content Area -->
+      <main class="dash-main">
+        <!-- Topbar -->
+        <div class="dash-topbar">
+          <div class="dash-title-group">
+            <h3 id="current-view-title">Resumen de Operaciones</h3>
+            <span style="font-size:12px; color:#777; font-family:var(--font-mono);">
+              Sincronización en vivo vía WebSockets
+            </span>
+          </div>
+          <div class="dash-status-pill">
+            <i></i> Sistema Operativo al 100%
+          </div>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="dash-kpis">
+          <div class="kpi-card">
+            <span class="kpi-label">Ingresos del Mes</span>
+            <div class="kpi-value" id="kpi-revenue">$482,900</div>
+            <div class="kpi-delta positive">
+              <span>↑ +18.4%</span> vs mes anterior
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Pedidos Procesados</span>
+            <div class="kpi-value">1,842</div>
+            <div class="kpi-delta positive">
+              <span>↑ 99.4%</span> cumplimiento a tiempo
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Ticket Promedio</span>
+            <div class="kpi-value">$2,621</div>
+            <div class="kpi-delta positive">
+              <span>↑ +$340</span> con nuevo catálogo
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Latencia de API</span>
+            <div class="kpi-value">38 ms</div>
+            <div class="kpi-delta positive">
+              <span>✓ 0 Errores</span> en 24h
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive SVG Chart -->
+        <div class="dash-chart-section">
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h4>Facturación Diaria (Octubre 2026)</h4>
+                <span style="font-size:11px; color:#777;">Pasa el cursor sobre la gráfica para ver el detalle por día</span>
+              </div>
+              <div class="chart-metric-selector">
+                <button type="button" class="metric-chip active" id="chip-gross">Ingreso Bruto</button>
+                <button type="button" class="metric-chip" id="chip-volume">Volumen Órdenes</button>
+              </div>
+            </div>
+
+            <div class="svg-chart-container">
+              <svg width="100%" height="160" viewBox="0 0 600 160" preserveAspectRatio="none" style="overflow:visible;" id="svg-chart">
+                <defs>
+                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#d8ff60" stop-opacity="0.45"/>
+                    <stop offset="100%" stop-color="#d8ff60" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="40" x2="600" y2="40" stroke="#f0efe8" stroke-width="1"/>
+                <line x1="0" y1="80" x2="600" y2="80" stroke="#f0efe8" stroke-width="1"/>
+                <line x1="0" y1="120" x2="600" y2="120" stroke="#f0efe8" stroke-width="1"/>
+
+                <!-- Area Fill -->
+                <path id="chart-area" d="M0 130 Q 75 110, 150 90 T 300 70 T 450 40 T 600 30 L 600 150 L 0 150 Z" fill="url(#chartGrad)"/>
+                <!-- Line -->
+                <path id="chart-line" d="M0 130 Q 75 110, 150 90 T 300 70 T 450 40 T 600 30" fill="none" stroke="#151515" stroke-width="3"/>
+                
+                <!-- Interactive Dots -->
+                <circle cx="150" cy="90" r="5" fill="#151515" class="chart-point" data-info="10 Oct: $64,200 MXN"/>
+                <circle cx="300" cy="70" r="5" fill="#151515" class="chart-point" data-info="12 Oct: $82,400 MXN"/>
+                <circle cx="450" cy="40" r="5" fill="#151515" class="chart-point" data-info="14 Oct: $104,800 MXN"/>
+                <circle cx="600" cy="30" r="6" fill="#d8ff60" stroke="#151515" stroke-width="2" class="chart-point" data-info="Hoy: $118,500 MXN (Récord)"/>
+              </svg>
+              <div class="chart-tooltip" id="chart-tooltip" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="dash-table-section">
+          <div class="table-card">
+            <div class="table-toolbar">
+              <div class="table-search">
+                <span>🔍</span>
+                <input type="text" id="order-search-input" placeholder="Buscar por cliente, ID o producto..." aria-label="Buscar en la tabla" />
+              </div>
+
+              <div class="status-filter-pills" role="radiogroup" aria-label="Filtrar por estado">
+                <button type="button" class="filter-pill active" data-filter="all">Todos (6)</button>
+                <button type="button" class="filter-pill" data-filter="success">Completados</button>
+                <button type="button" class="filter-pill" data-filter="in-progress">En Proceso</button>
+                <button type="button" class="filter-pill" data-filter="pending">Pendientes</button>
+              </div>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table class="data-table" id="orders-table">
+                <thead>
+                  <tr>
+                    <th>Folio</th>
+                    <th>Cliente / Empresa</th>
+                    <th>Detalle</th>
+                    <th>Importe</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders.map((ord) => (
+                    <tr data-status={ord.status} data-search={`${ord.id} ${ord.client} ${ord.items}`.toLowerCase()}>
+                      <td style="font-family:var(--font-mono); font-weight:700;">{ord.id}</td>
+                      <td style="font-weight:600;">{ord.client}</td>
+                      <td style="color:#666;">{ord.items}</td>
+                      <td style="font-family:var(--font-mono); font-weight:600;">{ord.amount}</td>
+                      <td>
+                        <span class={`badge-status ${ord.status}`}>
+                          <i>●</i> {ord.label}
+                        </span>
+                      </td>
+                      <td style="color:#888; font-family:var(--font-mono);">{ord.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section style="padding: 70px 48px; border-bottom: 1px solid #eee; background:#fff;">
+    <span class="eyebrow">CAPACIDADES DE INGENIERÍA</span>
+    <h2 style="font-size:clamp(30px,3.5vw,52px); margin:12px 0 20px;">Qué construimos para tu empresa.</h2>
+    <p class="lead" style="color:#666; max-width:720px; margin-bottom:44px;">
+      Diseñamos y programamos software que se adapta a las reglas operativas de tu compañía, no al revés.
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+      {capabilities.map((cap) => (
+        <div style="background:#faf9f6; border:1px solid #e7e5dc; border-radius:20px; padding:30px; display:flex; flex-direction:column; gap:14px;">
+          <div style="width:42px; height:42px; border-radius:10px; background:#151515; color:var(--color-signal); display:grid; place-items:center; font-size:20px;">
+            {cap.icon}
+          </div>
+          <h3 style="font-size:20px; margin:0;">{cap.title}</h3>
+          <p style="font-size:13px; line-height:1.6; color:#666; margin:0;">{cap.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tech Stack Matrix -->
+    <div style="margin-top: 50px; background:#151515; color:#fff; border-radius:20px; padding:36px; display:flex; flex-direction:column; gap:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <span style="font-size:11px; font-family:var(--font-mono); color:var(--color-signal); text-transform:uppercase;">Stack Tecnológico Comprobado</span>
+          <h4 style="font-size:24px; margin:6px 0 0;">Cero Deuda Técnica. Máxima Velocidad.</h4>
+        </div>
+        <a class="cta-primary" href={resolvePath('/start/?service=software')} style="background:var(--color-signal); color:#151515;">
+          Cotizar mi proyecto ↗
+        </a>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; border-top: 1px solid #333; padding-top: 24px;">
+        <div>
+          <strong style="display:block; font-size:14px; margin-bottom:4px;">Frontend</strong>
+          <span style="font-size:12px; color:#aaa; font-family:var(--font-mono);">Astro · Next.js · TypeScript · Tailwind</span>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; margin-bottom:4px;">Backend & APIs</strong>
+          <span style="font-size:12px; color:#aaa; font-family:var(--font-mono);">Node.js · REST / GraphQL · WebSockets</span>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; margin-bottom:4px;">Bases de Datos</strong>
+          <span style="font-size:12px; color:#aaa; font-family:var(--font-mono);">PostgreSQL · Supabase · Redis Cache</span>
+        </div>
+        <div>
+          <strong style="display:block; font-size:14px; margin-bottom:4px;">Infraestructura</strong>
+          <span style="font-size:12px; color:#aaa; font-family:var(--font-mono);">Edge Networks · Docker · CI/CD Automatizado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Client-side Dashboard Interactions
+    const searchInput = document.getElementById('order-search-input') as HTMLInputElement;
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const tableRows = document.querySelectorAll('#orders-table tbody tr');
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    function applyTableFilters() {
+      tableRows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status') || '';
+        const rowSearch = row.getAttribute('data-search') || '';
+
+        const matchesStatus = (currentFilter === 'all') || (rowStatus === currentFilter);
+        const matchesSearch = !searchQuery || rowSearch.includes(searchQuery);
+
+        if (matchesStatus && matchesSearch) {
+          (row as HTMLElement).style.display = '';
+        } else {
+          (row as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    searchInput?.addEventListener('input', () => {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      applyTableFilters();
+    });
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter') || 'all';
+        applyTableFilters();
+      });
+    });
+
+    // Chart Points Hover Tooltip
+    const chartTooltip = document.getElementById('chart-tooltip');
+    const chartPoints = document.querySelectorAll('.chart-point');
+
+    chartPoints.forEach(pt => {
+      pt.addEventListener('mouseenter', () => {
+        const info = pt.getAttribute('data-info') || '';
+        if (chartTooltip) {
+          chartTooltip.textContent = info;
+          chartTooltip.style.display = 'block';
+        }
+      });
+      pt.addEventListener('mouseleave', () => {
+        if (chartTooltip) chartTooltip.style.display = 'none';
+      });
+    });
+
+    // Chart metric chip toggle
+    const chipGross = document.getElementById('chip-gross');
+    const chipVolume = document.getElementById('chip-volume');
+    const chartLine = document.getElementById('chart-line');
+    const chartArea = document.getElementById('chart-area');
+
+    chipVolume?.addEventListener('click', () => {
+      chipVolume.classList.add('active');
+      chipGross?.classList.remove('active');
+      if (chartLine) chartLine.setAttribute('d', 'M0 100 Q 75 120, 150 70 T 300 110 T 450 50 T 600 20');
+      if (chartArea) chartArea.setAttribute('d', 'M0 100 Q 75 120, 150 70 T 300 110 T 450 50 T 600 20 L 600 150 L 0 150 Z');
+    });
+
+    chipGross?.addEventListener('click', () => {
+      chipGross.classList.add('active');
+      chipVolume?.classList.remove('active');
+      if (chartLine) chartLine.setAttribute('d', 'M0 130 Q 75 110, 150 90 T 300 70 T 450 40 T 600 30');
+      if (chartArea) chartArea.setAttribute('d', 'M0 130 Q 75 110, 150 90 T 300 70 T 450 40 T 600 30 L 600 150 L 0 150 Z');
+    });
+
+    // Sidebar navigation mock feedback
+    const navButtons = document.querySelectorAll('.dash-nav-btn');
+    const viewTitle = document.getElementById('current-view-title');
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (viewTitle) {
+          viewTitle.textContent = btn.textContent?.trim() || 'Panel';
+        }
+      });
+    });
+  </script>
+</DiferioPage>

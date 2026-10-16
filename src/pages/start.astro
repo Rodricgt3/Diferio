@@ -1,0 +1,288 @@
+---
+import DiferioPage from '../layouts/DiferioPage.astro';
+import { resolvePath } from '../utils/paths';
+---
+
+<DiferioPage
+  title="Iniciar un Proyecto — DIFERIO"
+  description="Cuéntanos sobre tu negocio, tu reto y el producto o experiencia digital que deseas construir. Recibe una propuesta técnica y estratégica clara."
+  activeNav="start"
+>
+  <div class="page-banner">
+    <div class="breadcrumb">
+      <a href={resolvePath('/')}>DIFERIO</a>
+      <span>/</span>
+      <span>CONTACTO & PROYECTOS</span>
+    </div>
+    <div class="badge-demo">Respuesta en menos de 24 horas hábiles</div>
+  </div>
+
+  <section class="start-experience">
+    <div class="start-header">
+      <span class="eyebrow" style="color:var(--color-signal); background:#151515; padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:12px;">
+        CONVERSACIÓN DIRECTA
+      </span>
+      <h1>Hagamos algo diferente.</h1>
+      <p>
+        Completa este formulario para contarnos qué necesita tu empresa. Te responderemos con un diagnóstico inicial de viabilidad técnica, alcance y estimación de inversión.
+      </p>
+    </div>
+
+    <div class="start-card">
+      <form id="inquiry-form" novalidate>
+        <!-- Service Selector Fieldset -->
+        <fieldset class="start-fieldset">
+          <legend class="start-legend">1. ¿Qué servicio necesita tu negocio? <span>*</span></legend>
+          <div class="service-selector-chips">
+            <div class="service-chip-option">
+              <input type="radio" id="srv-commerce" name="service" value="Shopify & E-Commerce" checked />
+              <label for="srv-commerce" class="service-chip-label">
+                <strong>🛍 Shopify & Comercio</strong>
+                <small>Tienda online de alta conversión, rediseño, optimización y checkout.</small>
+              </label>
+            </div>
+
+            <div class="service-chip-option">
+              <input type="radio" id="srv-experiences" name="service" value="Experiencias Web & Diseño" />
+              <label for="srv-experiences" class="service-chip-label">
+                <strong>✧ Experiencias Web</strong>
+                <small>Sitio web a medida, identidad digital interactiva y diseño editorial.</small>
+              </label>
+            </div>
+
+            <div class="service-chip-option">
+              <input type="radio" id="srv-software" name="service" value="Software a Medida" />
+              <label for="srv-software" class="service-chip-label">
+                <strong>⬡ Software a Medida</strong>
+                <small>Portales internos, herramientas operativas, integraciones y APIs.</small>
+              </label>
+            </div>
+
+            <div class="service-chip-option">
+              <input type="radio" id="srv-product" name="service" value="Producto Digital / SaaS MVP" />
+              <label for="srv-product" class="service-chip-label">
+                <strong>🚀 Producto Digital / SaaS</strong>
+                <small>Diseño y desarrollo de MVP para validar y lanzar un nuevo producto.</small>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Project Details Grid -->
+        <fieldset class="start-fieldset">
+          <legend class="start-legend">2. Información del Reto & Empresa</legend>
+          <div class="inquiry-grid">
+            <div class="inquiry-field">
+              <label for="inq-name">Tu nombre completo <span>*</span></label>
+              <input type="text" id="inq-name" name="name" required minlength="2" placeholder="Ej. Mariana González" autocomplete="name" />
+              <span class="field-error-msg" id="err-name" aria-live="polite"></span>
+            </div>
+
+            <div class="inquiry-field">
+              <label for="inq-email">Correo corporativo <span>*</span></label>
+              <input type="email" id="inq-email" name="email" required placeholder="mariana@tuempresa.com" autocomplete="email" />
+              <span class="field-error-msg" id="err-email" aria-live="polite"></span>
+            </div>
+
+            <div class="inquiry-field">
+              <label for="inq-business">Nombre de tu empresa o marca <span>*</span></label>
+              <input type="text" id="inq-business" name="business" required minlength="2" placeholder="Ej. Grupo Industrial Moka" autocomplete="organization" />
+              <span class="field-error-msg" id="err-business" aria-live="polite"></span>
+            </div>
+
+            <div class="inquiry-field">
+              <label for="inq-timeline">Plazo o fecha estimada</label>
+              <select id="inq-timeline" name="timeline">
+                <option value="1 a 2 meses (Inmediato)">1 a 2 meses (Inmediato)</option>
+                <option value="Próximo trimestre">Próximo trimestre</option>
+                <option value="3 a 6 meses">3 a 6 meses</option>
+                <option value="Fase exploratoria / Sin fecha fija">Fase exploratoria / Sin fecha fija</option>
+              </select>
+            </div>
+
+            <div class="inquiry-field inquiry-full">
+              <label for="inq-desc">¿Qué necesitas resolver o construir? <span>*</span></label>
+              <textarea id="inq-desc" name="description" rows="5" required minlength="20" placeholder="Cuéntanos brevemente sobre tu negocio, qué problema actual tienen o qué objetivos buscan alcanzar con esta tecnología..."></textarea>
+              <span class="field-error-msg" id="err-desc" aria-live="polite"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Budget Selector -->
+        <fieldset class="start-fieldset">
+          <legend class="start-legend">3. Rango de Presupuesto Estimado</legend>
+          <div class="budget-chips" role="radiogroup" aria-label="Rango presupuestal">
+            <div class="budget-chip-option">
+              <input type="radio" id="bg-1" name="budget" value="Menos de $50,000 MXN" />
+              <label for="bg-1" class="budget-chip-label">&lt; $50,000 MXN</label>
+            </div>
+            <div class="budget-chip-option">
+              <input type="radio" id="bg-2" name="budget" value="$50,000 – $100,000 MXN" checked />
+              <label for="bg-2" class="budget-chip-label">$50,000 – $100,000 MXN</label>
+            </div>
+            <div class="budget-chip-option">
+              <input type="radio" id="bg-3" name="budget" value="$100,000 – $250,000 MXN" />
+              <label for="bg-3" class="budget-chip-label">$100,000 – $250,000 MXN</label>
+            </div>
+            <div class="budget-chip-option">
+              <input type="radio" id="bg-4" name="budget" value="Más de $250,000 MXN" />
+              <label for="bg-4" class="budget-chip-label">&gt; $250,000 MXN</label>
+            </div>
+            <div class="budget-chip-option">
+              <input type="radio" id="bg-5" name="budget" value="Por definir en conjunto" />
+              <label for="bg-5" class="budget-chip-label">Por definir</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Actions & Honest Dispatch -->
+        <div class="inquiry-actions">
+          <p class="inquiry-meta-note">
+            <strong>Privacidad garantizada:</strong> Al hacer clic, se abrirá tu aplicación de correo con los datos estructurados para enviarlos a <code>hola@diferio.com</code>. No almacenamos tus datos en servidores de terceros.
+          </p>
+
+          <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="copy-proposal-btn" id="btn-copy-proposal">
+              <span>📋</span> <span id="copy-text">Copiar resumen</span>
+            </button>
+            <button type="submit" class="cta-primary">
+              Preparar correo a DIFERIO <span>↗</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="form-feedback" style="margin-top:20px; font-size:13px; font-weight:600; display:none;" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // URL Query Parameter Pre-selection
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get('service');
+
+    if (serviceParam) {
+      if (serviceParam.includes('commerce')) {
+        const el = document.getElementById('srv-commerce') as HTMLInputElement;
+        if (el) el.checked = true;
+      } else if (serviceParam.includes('experience') || serviceParam.includes('web')) {
+        const el = document.getElementById('srv-experiences') as HTMLInputElement;
+        if (el) el.checked = true;
+      } else if (serviceParam.includes('software')) {
+        const el = document.getElementById('srv-software') as HTMLInputElement;
+        if (el) el.checked = true;
+      } else if (serviceParam.includes('product') || serviceParam.includes('saas')) {
+        const el = document.getElementById('srv-product') as HTMLInputElement;
+        if (el) el.checked = true;
+      }
+    }
+
+    const form = document.getElementById('inquiry-form') as HTMLFormElement;
+    const copyBtn = document.getElementById('btn-copy-proposal');
+    const copyText = document.getElementById('copy-text');
+    const feedback = document.getElementById('form-feedback');
+
+    function getFormDataString() {
+      const data = new FormData(form);
+      const service = data.get('service') || 'No especificado';
+      const name = data.get('name') || 'No especificado';
+      const email = data.get('email') || 'No especificado';
+      const business = data.get('business') || 'No especificado';
+      const timeline = data.get('timeline') || 'Por definir';
+      const budget = data.get('budget') || 'Por definir';
+      const description = data.get('description') || 'Sin descripción detallada';
+
+      return [
+        `SOLICITUD DE PROYECTO — DIFERIO`,
+        `==================================`,
+        `Empresa o Marca: ${business}`,
+        `Contacto: ${name} (${email})`,
+        `Servicio Requerido: ${service}`,
+        `Presupuesto Estimado: ${budget}`,
+        `Plazo Estimado: ${timeline}`,
+        ``,
+        `Reto y Objetivos:`,
+        `${description}`,
+        `==================================`,
+        `Enviado desde https://rodricgt3.github.io/Diferio/start/`
+      ].join('\n');
+    }
+
+    function validateForm(): boolean {
+      const name = document.getElementById('inq-name') as HTMLInputElement;
+      const email = document.getElementById('inq-email') as HTMLInputElement;
+      const business = document.getElementById('inq-business') as HTMLInputElement;
+      const desc = document.getElementById('inq-desc') as HTMLTextAreaElement;
+
+      let valid = true;
+      let firstInvalid: HTMLElement | null = null;
+
+      function checkField(input: HTMLInputElement | HTMLTextAreaElement, errId: string, customMsg?: string) {
+        const errEl = document.getElementById(errId);
+        if (!input.validity.valid) {
+          valid = false;
+          input.setAttribute('aria-invalid', 'true');
+          if (errEl) {
+            errEl.textContent = customMsg || (input.validity.valueMissing ? 'Este campo es obligatorio.' : input.validity.tooShort ? `Escribe al menos ${input.minLength} caracteres.` : 'Revisa este dato.');
+          }
+          if (!firstInvalid) firstInvalid = input;
+        } else {
+          input.removeAttribute('aria-invalid');
+          if (errEl) errEl.textContent = '';
+        }
+      }
+
+      checkField(name, 'err-name');
+      checkField(email, 'err-email', email.validity.typeMismatch ? 'Escribe un correo electrónico válido.' : undefined);
+      checkField(business, 'err-business');
+      checkField(desc, 'err-desc', desc.validity.tooShort ? 'Por favor describe tu proyecto con al menos 20 caracteres para poder ayudarte mejor.' : undefined);
+
+      if (firstInvalid) {
+        (firstInvalid as HTMLElement).focus();
+      }
+
+      return valid;
+    }
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      const data = new FormData(form);
+      const business = data.get('business') || 'Proyecto';
+      const body = getFormDataString();
+      const subject = encodeURIComponent(`Nuevo Proyecto DIFERIO — ${business}`);
+
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.style.color = '#1b6815';
+        feedback.textContent = 'Abriendo tu cliente de correo con el borrador preparado...';
+      }
+
+      window.location.href = `mailto:hola@diferio.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    });
+
+    // Copy proposal summary
+    copyBtn?.addEventListener('click', async () => {
+      const text = getFormDataString();
+      try {
+        await navigator.clipboard.writeText(text);
+        if (copyText) copyText.textContent = '¡Copiado al portapapeles!';
+        setTimeout(() => {
+          if (copyText) copyText.textContent = 'Copiar resumen';
+        }, 3000);
+      } catch (err) {
+        alert('Resumen para copiar:\n\n' + text);
+      }
+    });
+
+    // Clear validation error on input
+    form?.querySelectorAll('input, textarea, select').forEach(input => {
+      input.addEventListener('input', () => {
+        input.removeAttribute('aria-invalid');
+        const errEl = input.parentElement?.querySelector('.field-error-msg');
+        if (errEl) errEl.textContent = '';
+      });
+    });
+  </script>
+</DiferioPage>
