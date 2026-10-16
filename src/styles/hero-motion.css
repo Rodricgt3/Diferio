@@ -5,8 +5,13 @@
 }
 
 .gallery-track {
-  animation: drift 18s linear infinite !important;
+  animation: hero-gallery-loop 18s linear infinite !important;
   will-change: transform;
+}
+
+@keyframes hero-gallery-loop {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes drift {
@@ -41,6 +46,10 @@
   z-index: 2;
 }
 
+.blur-text-word {
+  animation-play-state: running !important;
+}
+
 /* Tarjeta con imagen de Imgur limpia (sin texto, solo imagen) */
 .tile-has-image {
   background: #151515;
@@ -64,7 +73,7 @@
 
 /* Al pasar el mouse por el carrusel, se ralentiza suavemente la rotación; al quitarlo vuelve a velocidad normal */
 .gallery:hover .gallery-track {
-  animation-duration: 18s !important;
+  animation-duration: 60s !important;
   animation-play-state: running !important;
 }
 
