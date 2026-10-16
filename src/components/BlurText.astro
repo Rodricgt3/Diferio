@@ -1,0 +1,81 @@
+---
+interface Props {
+  text?: string;
+  delay?: number;
+  stepDuration?: number;
+  blur?: number;
+  distance?: number;
+  className?: string;
+}
+
+const {
+  text = '',
+  delay = 200,
+  stepDuration = 0.35,
+  blur = 10,
+  distance = 50,
+  className = ''
+} = Astro.props;
+
+// Dividimos por palabras preservando espacios o permitiendo slots
+const words = text ? text.split(' ') : [];
+---
+
+<div
+  class={`blur-text-container ${className}`}
+  data-delay={delay}
+  data-step-duration={stepDuration}
+  data-blur={blur}
+  data-distance={distance}
+>
+  {words.length > 0 ? (
+    words.map((word, i) => (
+      <span
+        class="blur-text-word"
+        style={`--blur-delay: ${delay + i * (stepDuration * 1000)}ms; --blur-duration: ${stepDuration}s; --blur-distance: -${distance}px; --blur-amount: ${blur}px;`}
+      >
+        {word}&nbsp;
+      </span>
+    ))
+  ) : (
+    <slot />
+  )}
+</div>
+
+<style>
+  .blur-text-container {
+    display: inline-block;
+  }
+
+  .blur-text-word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(var(--blur-amount, 10px));
+    transform: translateY(var(--blur-distance, -50px));
+    animation: blurTextFadeIn var(--blur-duration, 0.35s) cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: var(--blur-delay, 200ms);
+    will-change: transform, opacity, filter;
+  }
+
+  @keyframes blurTextFadeIn {
+    0% {
+      opacity: 0;
+      filter: blur(var(--blur-amount, 10px));
+      transform: translateY(var(--blur-distance, -50px));
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blur-text-word {
+      animation: none !important;
+      opacity: 1 !important;
+      filter: none !important;
+      transform: none !important;
+    }
+  }
+</style>

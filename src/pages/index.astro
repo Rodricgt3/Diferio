@@ -3,6 +3,7 @@ import '../styles/reference.css';
 import '../styles/hero-motion.css';
 import '../styles/expansion.css';
 import CaseStudy from '../components/CaseStudy.astro';
+import BlurText from '../components/BlurText.astro';
 import { resolvePath } from '../utils/paths';
 
 const services = [
@@ -34,6 +35,37 @@ const services = [
 
 const steps = ['Descubrir', 'Diseñar', 'Construir', 'Lanzar'];
 
+const heroGalleryItems = [
+  {
+    name: 'Atelier Objets',
+    image: 'https://i.imgur.com/1O1tKq5.png'
+  },
+  {
+    name: 'Studio V',
+    image: 'https://i.imgur.com/aXO3QLC.png'
+  },
+  {
+    name: 'Pulse OS',
+    image: 'https://i.imgur.com/J2lxDCg.png'
+  },
+  {
+    name: 'Vortex Cloud',
+    image: 'https://i.imgur.com/tvWh6YA.png'
+  },
+  {
+    name: 'Kroma Studio',
+    image: 'https://i.imgur.com/nOq5zMQ.png'
+  },
+  {
+    name: 'Apex Motion',
+    image: 'https://i.imgur.com/DIDK2YS.png'
+  },
+  {
+    name: 'Diferio Lab',
+    image: 'https://i.imgur.com/4mEbF8E.png'
+  }
+];
+
 const concepts = [
   {
     name: 'Atelier Objets / E-Commerce',
@@ -41,7 +73,8 @@ const concepts = [
     type: 'Concepto',
     desc: 'Exploración de catálogo, variantes y resumen de compra. No procesa pagos.',
     tech: 'Shopify Liquid · TypeScript · Astro · LCP 0.8s',
-    link: '/commerce/'
+    link: '/commerce/',
+    image: 'https://i.imgur.com/1O1tKq5.png'
   },
   {
     name: 'Studio V / Arquitectura',
@@ -49,7 +82,8 @@ const concepts = [
     type: 'Concepto',
     desc: 'Sitio editorial inmersivo con retícula activa de 12 columnas, escala tipográfica fluida y modo blueprint técnico.',
     tech: 'Frontend Cinético · CSS Grid · 60 FPS · WCAG AA',
-    link: '/experiences/'
+    link: '/experiences/',
+    image: 'https://i.imgur.com/aXO3QLC.png'
   },
   {
     name: 'Pulse OS / Portal Operativo',
@@ -57,7 +91,8 @@ const concepts = [
     type: 'Concepto',
     desc: 'Interfaz operativa con datos simulados y filtrado de órdenes. No está conectada a sistemas reales.',
     tech: 'TypeScript · WebSockets · SVG Data Charts · PostgreSQL',
-    link: '/software/'
+    link: '/software/',
+    image: 'https://i.imgur.com/J2lxDCg.png'
   },
   {
     name: 'Vortex / Producto SaaS',
@@ -65,7 +100,8 @@ const concepts = [
     type: 'Concepto',
     desc: 'Plataforma SaaS con autenticación de usuarios, roles operativos y facturación automatizada.',
     tech: 'SaaS MVP · APIs REST · Control de Permisos · Cloud',
-    link: '/start/?service=product'
+    link: '/start/?service=product',
+    image: 'https://i.imgur.com/tvWh6YA.png'
   }
 ];
 ---
@@ -118,14 +154,53 @@ const concepts = [
       <!-- Hero Section -->
       <section class="hero" id="about">
         <a class="announcement" href="#works">Explora nuestros conceptos &nbsp; →</a>
-        <h1>Somos diferio.<br/>Diseño <span class="mini-mark">d.</span> & Tecnología</h1>
+        <h1>
+          <BlurText
+            text="Somos diferio."
+            delay={150}
+            stepDuration={0.35}
+            blur={10}
+            distance={50}
+            className="hero-title-line"
+          />
+          <br/>
+          <span class="hero-title-sub">
+            <BlurText
+              text="Diseño"
+              delay={350}
+              stepDuration={0.35}
+              blur={10}
+              distance={50}
+            />
+            <span class="mini-mark">d.</span>
+            <BlurText
+              text="& Tecnología"
+              delay={550}
+              stepDuration={0.35}
+              blur={10}
+              distance={50}
+            />
+          </span>
+        </h1>
         <p>Ordinary isn't enough.</p>
         <div class="gallery" aria-label="Exploraciones gráficas originales">
           <div class="gallery-track">
-            {[...concepts, ...concepts].map((item, i) => (
-              <div class={`tile tile-${i % 4}`}>
-                <span>d.</span>
-                <small>{item.name.split('/')[0].trim()}</small>
+            {[...heroGalleryItems, ...heroGalleryItems].map((item, i) => (
+              <div class={`tile tile-${i % 4} ${item.image ? 'tile-has-image' : ''}`}>
+                {item.image ? (
+                  <>
+                    <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />
+                    <div class="tile-overlay">
+                      <span>d.</span>
+                      <small>{item.name}</small>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span>d.</span>
+                    <small>{item.name}</small>
+                  </>
+                )}
               </div>
             ))}
           </div>

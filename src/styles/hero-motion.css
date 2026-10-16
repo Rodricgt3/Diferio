@@ -1,5 +1,104 @@
-.gallery-track{animation:drift 18s linear infinite!important}
-.gallery-track .tile{transform:translateY(0);transition:transform .3s ease}
-.gallery-track .tile:hover{transform:translateY(-8px)}
-.gallery:hover .gallery-track{animation-play-state:running}
-@media(prefers-reduced-motion:reduce){.gallery-track{animation:none}.gallery-track .tile{transition:none;transform:none}}
+/* Carrusel Hero: fluidez, espacio para elevación (sin recorte) y desaceleración en hover */
+.gallery {
+  padding-top: 18px;
+  margin-top: calc(150px - 18px);
+}
+
+.gallery-track {
+  animation: drift 26s linear infinite !important;
+  will-change: transform;
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-1204px);
+  }
+}
+
+.hero-title-sub {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.15em;
+}
+
+.hero-title-sub .mini-mark {
+  margin: 0 0.15em;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.gallery-track .tile {
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.gallery-track .tile:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+/* Tarjeta con imagen de Imgur */
+.tile-has-image {
+  background: #111;
+  position: relative;
+}
+
+.tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.85);
+}
+
+.tile:hover .tile-img {
+  transform: scale(1.08);
+  filter: brightness(0.95);
+}
+
+.tile-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Al pasar el mouse por el carrusel, se ralentiza suavemente la rotación; al quitarlo vuelve a velocidad normal */
+.gallery:hover .gallery-track {
+  animation-duration: 60s !important;
+  animation-play-state: running !important;
+}
+
+@media (max-width: 1199px) {
+  .gallery {
+    margin-top: calc(100px - 18px);
+  }
+}
+
+@media (max-width: 809px) {
+  .gallery {
+    margin-top: calc(70px - 18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    animation: none !important;
+  }
+  .gallery-track .tile {
+    transition: none;
+    transform: none;
+  }
+}
