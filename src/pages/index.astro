@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+const services = [
+  { name:'Brand Essentials', text:'A strong starting point for brands that need clarity and direction.', items:['Logo Design','Basic Visual System','Color & Typography','Mini Brand Guidelines'], price:'$800/project' },
+  { name:'Digital Experience', text:'Modern, conversion-focused design for web and digital products.', items:['Landing Page Design','UI & Layout Systems','Responsive Design','Prototyping'], price:'$1,500/project' },
+  { name:'Brand System', text:'A complete visual foundation across brand and digital touchpoints.', items:['Full Brand Identity','Website Design','Visual Consistency Guidelines'], price:'$2,500/project' },
+  { name:'Creative Direction', text:'End-to-end art direction for brands aiming to stand out.', items:['Concept & Campaign Direction','Key Visual Development'], price:'$3,500/project' },
+];
+const steps = [
+  { title:'Discover & Define', tags:['Research','Strategy','Foundation'] },
+  { title:'Creative Direction', tags:['Concept','Moodboard','Identity'] },
+  { title:'Design System', tags:['Typography','Grid','Components'] },
+  { title:'Refine & Deliver', tags:['Polish','Assets','Launch'] },
+];
+const experience = [
+  ['Art Director & Designer','Jan 2025 – Present','Partnering with ambitious brands worldwide to craft visual identities.'],
+  ['Senior Brand Designer - Atelier','Jun 2023 – Dec 2024','Led branding projects from strategy to execution, creating scalable identity systems for established businesses.'],
+  ['UI/UX Designer - Horizon','Jan 2022 – May 2023','Designed intuitive digital products, websites, and user experiences by balancing usability with clean visual.'],
+  ['Junior Graphic Designer - Nova','Jan 2020 – Dec 2021','Developed visual assets across print and digital media while building a strong foundation in design.'],
+];
+const skills = [['Figma','Interface & system design',95],['Framer','Prototyping & web building',85],['Adobe Photoshop','Visual composition & retouching',90],['After Effects','Motion & interaction',85],['Adobe Illustrator','Vector & identity design',90],['Blender','3D & experimental visuals',75]] as const;
+const posts = [
+  ['Why great brands begin with a clear visual system','A closer look at how typography, color, layout, and consistency work together to build memorable brand experiences.','Branding','Jun 26, 2026'],
+  ['Designing with intention instead of trends','Exploring how thoughtful creative decisions create timeless work that lasts beyond the latest design trends.','Creative','May 30, 2026'],
+  ['From concept to execution: my creative workflow','A behind-the-scenes look at the process I use to transform ideas into cohesive visual identities and digital experiences.','Process','Apr 12, 2026'],
+];
+const faqs = [
+  ['Can you work with existing brands?','Yes. I can build on an existing identity and refine its visual direction while respecting what already works.'],
+  ['What types of projects do you take on?','I work on brand identities, creative direction, websites, digital products, marketing visuals, and design systems for startups, agencies, and growing businesses.'],
+  ['How long does a typical project take?','The timeline depends on scope. We can discuss a schedule after defining the project and deliverables.'],
+  ['What do you need before we begin?','A short description of your business, goals, audience, and any existing brand material is enough to start a conversation.'],
+];
+---
+<Base>
+  <Header />
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-top"><span class="status"><i></i> New work <b>Available</b></span><span>Based in<br />Montreal, Canada</span><a href="#works">My NEW project is out! ↗</a></div>
+      <div class="hero-title"><span>Hi I’m Lewius Gordon</span><h1 id="hero-title">Art Director<br /><em>& Designer</em></h1></div>
+      <div class="hero-bottom"><div class="hero-art" role="img" aria-label="Original abstract editorial artwork"><div class="hero-disc"></div><div class="hero-monogram">LG</div></div><p>I’m Lewius Gordon, an Art Director focused on building bold visual systems and brand experiences.</p><a class="round-link" href="#works" aria-label="Scroll to work">↓</a></div>
+    </section>
+    <section class="projects dark" id="works"><div class="wrap"><SectionHeading eyebrow="Latest Projects" title="Projects that tell you stories" /><div class="project-grid"><div class="project-art art-one reveal"><span>Form / Function</span><strong>01</strong></div><div class="project-art art-two reveal"><span>Perspective</span><strong>02</strong></div><div class="project-art art-three reveal"><span>Objects in motion</span><strong>03</strong></div></div><div class="project-foot"><span>© 24-26</span><div>Brand Essentials / Digital Experience<br />Brand System / Creative Direction</div></div></div></section>
+    <section class="section wrap" id="services"><SectionHeading eyebrow="Services" title="Crafting visuals that lead, not follow." /><p class="section-intro reveal">I help brands shape strong visual identities and digital experiences through thoughtful direction and design.</p><div class="service-grid">{services.map((service,index)=><article class="service-card reveal"><span class="index">0{index+1} / 04</span><h3>{service.name}</h3><p>{service.text}</p><ul>{service.items.map(item=><li>{item}</li>)}</ul><div class="card-bottom"><span>From<br /><strong>{service.price}</strong></span><a href="#contact" aria-label={`Book a call for ${service.name}`}>↗</a></div></article>)}</div></section>
+    <section class="section process light"><div class="wrap"><SectionHeading eyebrow="Process" title="Crafting visuals" /><p class="section-intro reveal">Every project begins with understanding the brand’s purpose, then evolves into a visual system that is distinctive, scalable, and built to create lasting impact.</p><div class="step-list">{steps.map((step,index)=><article class="step reveal"><span>Step 0{index+1}</span><h3>{step.title}</h3><div>{step.tags.map(tag=><span>{tag}</span>)}</div></article>)}</div><div class="stat reveal"><strong>98%</strong><div><b>Client satisfaction rate</b><p>Trusted by founders and brands to deliver thoughtful creative direction, refined execution, and consistent design quality.</p></div></div></div></section>
+    <section class="section wrap" id="about"><SectionHeading eyebrow="My Experience" title="Building brands through design" /><div class="experience-list">{experience.map(([role,date,description])=><article class="experience-row reveal"><h3>{role}</h3><time>{date}</time><p>{description}</p></article>)}</div><a class="pill-link" href="#contact">Let’s Work Together ↗</a></section>
+    <section class="philosophy dark"><div class="wrap philosophy-grid"><div class="philosophy-art reveal" role="img" aria-label="Original warm toned abstract studio composition"><div></div></div><div class="reveal"><span class="eyebrow">My Philosophy</span><h2>Great design isn’t decoration.</h2><p>I believe the strongest visual identities are built on a clear point of view. They create consistency, meaning, and recognition across every touchpoint.</p><p>As an Art Director, my role is to bring structure to ideas and emotion to strategy, translating business goals into visual experiences people genuinely remember.</p></div></div></section>
+    <section class="section wrap testimonials"><SectionHeading eyebrow="Testimonials" title="What people say about my work" /><div class="quote-card reveal"><div class="quote-label">Trusted by<br /><strong>120+ globally clients</strong></div><blockquote>“His direction completely transformed how we present ourselves digitally. The work feels minimal yet powerful, and every detail is intentional. It’s design that actually moves the business forward.”</blockquote><div class="quote-author"><span class="avatar">MB</span><span>Michael Brooks<small>Founder, Horizon Studio</small></span></div></div></section>
+    <section class="section toolkit light"><div class="wrap"><SectionHeading eyebrow="Toolkits" title="Over the years, I’ve built a flexible toolkit that allows me to move from concept to execution efficiently - balancing creativity with precision across different mediums." /><div class="skill-grid">{skills.map(([name,detail,percent])=><div class="skill reveal"><div><strong>{name}</strong><span>{percent}%</span></div><p>{detail}</p><div class="meter" role="meter" aria-label={name} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100"><i style={`width:${percent}%`}></i></div></div>)}</div></div></section>
+    <section class="archive dark"><div class="wrap"><span class="eyebrow">Archive</span><div class="archive-grid"><div class="archive-art archive-a"></div><div class="archive-art archive-b"></div><div class="archive-art archive-c"></div></div></div></section>
+    <section class="section wrap" id="blog"><SectionHeading eyebrow="My Blog" title="Space for journal" /><div class="post-grid">{posts.map(([title,summary,category,date],index)=><article class="post-card reveal"><div class={`post-art post-${index+1}`} aria-hidden="true"></div><div class="post-meta"><span>{category}</span><time>{date}</time></div><h3>{title}</h3><p>{summary}</p></article>)}</div></section>
+    <section class="section faq light"><div class="wrap faq-grid"><div><span class="eyebrow">FAQ</span><h2>Everything you need to know about my creative process, collaboration, and project expectations.</h2><p>Still have a question? <a href="mailto:contact@lewius.des">Send me an email ↗</a></p></div><div class="faq-list">{faqs.map(([question,answer])=><details><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>
+    <section class="contact dark" id="contact"><div class="wrap contact-grid"><div><span class="eyebrow">Contact</span><h2>Let’s build<br />something impactful.</h2><p>If you’re looking to elevate your brand or create something meaningful, I’d love to collaborate.</p><a href="mailto:contact@lewius.des" class="pill-link light-pill">Send Me Email ↗</a></div><div class="contact-details"><a href="mailto:contact@lewius.des">contact@lewius.des</a><a href="tel:+15555555555">(+1) 555 555-5555</a></div></div></section>
+  </main>
+  <footer class="site-footer dark"><div class="wrap footer-grid"><a class="footer-brand" href="#top">Lewius Gordon<span>Art Director & Designer</span></a><div><span>Links</span><a href="#top">Home</a><a href="#about">About</a><a href="#contact">Contact</a></div><div><span>Resource</span><a href="#services">Services</a><a href="#blog">Blog</a><a href="#works">Works</a></div></div><div class="wrap footer-bottom"><span>© 2026 Lewius Gordon. All Rights Reserved</span><a href="#top">Back to top ↑</a></div></footer>
+</Base>
