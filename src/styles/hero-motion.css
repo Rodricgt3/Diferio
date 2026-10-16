@@ -5,7 +5,7 @@
 }
 
 .gallery-track {
-  animation: drift 26s linear infinite !important;
+  animation: drift 18s linear infinite !important;
   will-change: transform;
 }
 
@@ -55,6 +55,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
 }
 
 .tile:hover .tile-img {
@@ -63,7 +64,7 @@
 
 /* Al pasar el mouse por el carrusel, se ralentiza suavemente la rotación; al quitarlo vuelve a velocidad normal */
 .gallery:hover .gallery-track {
-  animation-duration: 60s !important;
+  animation-duration: 18s !important;
   animation-play-state: running !important;
 }
 

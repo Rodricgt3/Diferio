@@ -58,12 +58,18 @@ const heroGalleryItems = [
   },
   {
     name: 'Apex Motion',
-    image: 'https://i.imgur.com/DIDK2YS.png'
+    image: 'https://i.imgur.com/DIDK2YS.png',
+    video: 'https://i.imgur.com/DIDK2YS.mp4'
   },
   {
     name: 'Diferio Lab',
-    image: 'https://i.imgur.com/4mEbF8E.png'
+    image: 'https://i.imgur.com/4mEbF8E.png',
+    video: 'https://i.imgur.com/4mEbF8E.mp4'
   }
+];
+const heroVideoSources = [
+  import.meta.env.PUBLIC_HERO_VIDEO_1,
+  import.meta.env.PUBLIC_HERO_VIDEO_2,
 ];
 
 const concepts = [
@@ -95,12 +101,12 @@ const concepts = [
     image: 'https://i.imgur.com/J2lxDCg.png'
   },
   {
-    name: 'Vortex / Producto SaaS',
-    code: 'd/product',
+    name: 'Apex / Motion Film',
+    code: 'd/film',
     type: 'Concepto',
-    desc: 'Plataforma SaaS con autenticación de usuarios, roles operativos y facturación automatizada.',
-    tech: 'SaaS MVP · APIs REST · Control de Permisos · Cloud',
-    link: '/start/?service=product',
+    desc: 'Exploración de montaje, ritmo y dirección visual para una pieza comercial. Sin metraje de cliente atribuido.',
+    tech: 'Edición · Motion Graphics · Dirección Audiovisual',
+    link: '/motion/',
     image: 'https://i.imgur.com/tvWh6YA.png'
   }
 ];
@@ -187,7 +193,7 @@ const concepts = [
           <div class="gallery-track">
             {[...heroGalleryItems, ...heroGalleryItems].map((item, i) => (
               <div class={`tile tile-${i % 4} tile-has-image`}>
-                <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />
+                {(item.video || heroVideoSources[i % heroVideoSources.length]) ? <video class="tile-img" autoplay muted loop playsinline preload="metadata" aria-label={item.name}><source src={item.video || heroVideoSources[i % heroVideoSources.length]} type="video/mp4" /></video> : <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />}
               </div>
             ))}
           </div>
@@ -198,8 +204,16 @@ const concepts = [
       <section id="works">
         <span class="eyebrow">Demostraciones conceptuales</span><p>Prototipos navegables, sin clientes ni resultados atribuidos. Los trabajos de cliente y productos internos se publicarán como categorías independientes cuando existan casos autorizados.</p>
         <h2>Ideas que cuentan<br/>otra historia.</h2>
+        <div class="project-filters" role="group" aria-label="Filtrar proyectos">
+          <button class="filter-button is-active" type="button" data-filter="all">Todos <span>↗</span></button>
+          <button class="filter-button" type="button" data-filter="commerce">Commerce <span>↗</span></button>
+          <button class="filter-button" type="button" data-filter="digital">Digital Experiences <span>↗</span></button>
+          <button class="filter-button" type="button" data-filter="software">Software & Products <span>↗</span></button>
+          <button class="filter-button" type="button" data-filter="motion">Motion & Film <span>↗</span></button>
+        </div>
         <div class="work-grid">
-          {concepts.slice(0,3).map((item,i) => <CaseStudy {...item} index={i}/>)}        </div>
+          {concepts.map((item,i) => <CaseStudy {...item} index={i}/>)}
+        </div>
       </section>
 
       <!-- Services Section (Preserves exact services grid UX) -->
@@ -308,5 +322,15 @@ const concepts = [
       </footer>
     </main>
   </div>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.filter-button').forEach(button => button.addEventListener('click', () => {
+    const filter = button.dataset.filter || 'all';
+    document.querySelectorAll<HTMLButtonElement>('.filter-button').forEach(item => item.classList.toggle('is-active', item === button));
+    document.querySelectorAll<HTMLElement>('.work-grid article').forEach(card => {
+      const visible = filter === 'all' || card.dataset.category === filter;
+      card.hidden = !visible;
+    });
+  }));
+</script>
 </body>
 </html>
