@@ -1,0 +1,6 @@
+---
+import { resolvePath } from '../utils/paths';
+interface Props { title:string; src?:string; }
+const {title,src}=Astro.props;
+---
+<figure class="video-preview"><figcaption>{title}</figcaption>{src ? <video controls playsinline preload="none" aria-label={title}><source src={resolvePath(src)} type="video/mp4"/>Tu navegador no soporta este video.</video> : <div class="media-empty"><strong>d. / motion</strong><span>Espacio reservado · material audiovisual pendiente</span><p>No es un proyecto publicado ni un video reproducible.</p></div>}</figure>

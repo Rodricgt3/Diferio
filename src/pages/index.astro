@@ -1,31 +1,33 @@
 ---
 import '../styles/reference.css';
+import '../styles/expansion.css';
+import CaseStudy from '../components/CaseStudy.astro';
 import { resolvePath } from '../utils/paths';
 
 const services = [
   {
-    name: 'Shopify & Comercio',
+    name: 'Commerce',
     description: 'Tiendas rápidas y una compra clara. Catálogo editorial, optimización de conversión y checkout sin fricción.',
     link: '/commerce/',
     action: 'Explorar experiencia de comercio ↗'
   },
   {
-    name: 'Experiencias web',
+    name: 'Digital Experiences',
     description: 'Sitios a medida con diseño de autor, tipografía monumental, micro-interacciones y narrativa que explican tu negocio.',
     link: '/experiences/',
     action: 'Ver laboratorio de experiencias ↗'
   },
   {
-    name: 'Software a medida',
-    description: 'Aplicaciones web, portales de gestión operativa y herramientas internas para automatizar procesos de tu empresa.',
+    name: 'Software & Products',
+    description: 'Aplicaciones web, portales privados, gestión empresarial y MVP de SaaS para resolver procesos de negocio.',
     link: '/software/',
     action: 'Probar demo de plataforma ↗'
   },
   {
-    name: 'Productos digitales',
-    description: 'Diseño UX y desarrollo ágil de MVP en TypeScript para validar y lanzar tu próximo producto o SaaS en semanas.',
-    link: '/start/?service=product',
-    action: 'Iniciar consulta de MVP ↗'
+    name: 'Motion & Film',
+    description: 'Edición profesional, reels comerciales, películas promocionales, motion graphics y video sales letters.',
+    link: '/motion/',
+    action: 'Explorar Motion & Film ↗'
   }
 ];
 
@@ -36,7 +38,7 @@ const concepts = [
     name: 'Atelier Objets / E-Commerce',
     code: 'd/shop',
     type: 'Concepto',
-    desc: 'Catálogo editorial para objetos de diseño con PDP narrativo y checkout en 1 paso. Demostración técnica.',
+    desc: 'Exploración de catálogo, variantes y resumen de compra. No procesa pagos.',
     tech: 'Shopify Liquid · TypeScript · Astro · LCP 0.8s',
     link: '/commerce/'
   },
@@ -52,7 +54,7 @@ const concepts = [
     name: 'Pulse OS / Portal Operativo',
     code: 'd/portal',
     type: 'Concepto',
-    desc: 'Dashboard de gestión empresarial con KPIs en tiempo real, gráficas dinámicas y filtrado de órdenes.',
+    desc: 'Interfaz operativa con datos simulados y filtrado de órdenes. No está conectada a sistemas reales.',
     tech: 'TypeScript · WebSockets · SVG Data Charts · PostgreSQL',
     link: '/software/'
   },
@@ -97,7 +99,7 @@ const concepts = [
         <a href="#process">▤ &nbsp; Proceso</a>
       </nav>
       <div class="sidebar-bottom">
-        <p>DESIGN / SOFTWARE / COMMERCE</p>
+        <p>DESIGN / SOFTWARE / COMMERCE / MOTION</p>
         <a class="button" href={resolvePath('/start/')}>Iniciar un proyecto ↗</a>
       </div>
     </aside>
@@ -131,28 +133,10 @@ const concepts = [
 
       <!-- Works Section (Preserves exact work-grid UX) -->
       <section id="works">
-        <span class="eyebrow">Proyectos seleccionados</span>
+        <span class="eyebrow">Demostraciones conceptuales</span><p>Prototipos navegables, sin clientes ni resultados atribuidos. Los trabajos de cliente y productos internos se publicarán como categorías independientes cuando existan casos autorizados.</p>
         <h2>Ideas que cuentan<br/>otra historia.</h2>
         <div class="work-grid">
-          {concepts.map((item, i) => (
-            <article>
-              <div class={`art tile-${i}`}>
-                <span>{item.code}</span>
-              </div>
-              <div class="caption">
-                <h3>{item.name}</h3>
-                <span>{item.type} / 0{i + 1}</span>
-              </div>
-              <p>{item.desc}</p>
-              <div style="font-size:11px; color:#888; font-family:ui-monospace, monospace; margin-top:8px;">
-                {item.tech}
-              </div>
-              <a href={resolvePath(item.link)} style="display:inline-block; font-size:12px; margin-top:10px; color:#151515; text-decoration:underline;">
-                Ver demostración interactiva ↗
-              </a>
-            </article>
-          ))}
-        </div>
+          {concepts.slice(0,3).map((item,i) => <CaseStudy {...item} index={i}/>)}        </div>
       </section>
 
       <!-- Services Section (Preserves exact services grid UX) -->
@@ -163,7 +147,7 @@ const concepts = [
         <div class="services">
           {services.map((item, i) => (
             <article>
-              <span>0{i + 1}</span>
+              <div class={`service-preview tile-${i}`} aria-hidden="true">{["d/shop","d/web","d/product","d/film"][i]}</div><span>0{i + 1}</span>
               <h3>{item.name}</h3>
               <p>{item.description}</p>
               <a href={resolvePath(item.link)}>{item.action}</a>
@@ -182,18 +166,6 @@ const concepts = [
             <small>Paso 0{i + 1}</small>
             <h3>{step}</h3>
             <p>{['Objetivos · Usuarios · Alcance', 'Estructura · Identidad · Prototipo', 'Desarrollo · Integración · Pruebas', 'Publicación · Entrega · Evolución'][i]}</p>
-          </div>
-        ))}
-      </section>
-
-      <!-- Experience Section -->
-      <section>
-        <span class="eyebrow">Nuestra experiencia</span>
-        <h2>La base de lo<br/>que construimos.</h2>
-        {services.map((item) => (
-          <div class="experience">
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
           </div>
         ))}
       </section>
@@ -239,38 +211,6 @@ const concepts = [
         </div>
       </section>
 
-      <!-- Archive Section -->
-      <section>
-        <span class="eyebrow">Archivo conceptual</span>
-        <div class="archive">
-          {concepts.map((item, i) => (
-            <div class={`tile tile-${i}`}>
-              <span>d.</span>
-              <small>{item.code}</small>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- Journal Section -->
-      <section>
-        <span class="eyebrow">Ideas</span>
-        <h2>Espacio para<br/>pensar diferente.</h2>
-        <div class="journal">
-          {[
-            'Una compra con menos fricción',
-            'Un sitio que explica tu negocio',
-            'Software que simplifica el trabajo'
-          ].map((title, i) => (
-            <article>
-              <div class={`art tile-${i}`}>0{i + 1}</div>
-              <h3>{title}</h3>
-              <p>Una línea de exploración de DIFERIO.</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <!-- FAQ Section -->
       <section>
         <span class="eyebrow">Preguntas frecuentes</span>
@@ -299,7 +239,7 @@ const concepts = [
       <!-- Footer -->
       <footer>
         <strong>diferio.</strong>
-        <p>Design / Software / Commerce</p>
+        <p>Design / Software / Commerce / Motion</p>
         <a href="#main">Volver arriba ↑</a>
         <small>© {new Date().getFullYear()} DIFERIO</small>
       </footer>

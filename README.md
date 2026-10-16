@@ -27,7 +27,7 @@ La ruta base se resuelve dinámicamente mediante `GITHUB_REPOSITORY` en CI (`htt
 
 En conformidad con las directrices de honestidad y privacidad de DIFERIO:
 - El formulario en `/start/` no almacena datos en bases de datos externas de terceros sin consentimiento explícito.
-- Valida los campos en el cliente con accesibilidad completa (`aria-invalid`, `aria-live`) y abre un borrador profesional en el cliente de correo del usuario hacia `hola@diferio.com`.
+- Valida los campos en el cliente con accesibilidad completa (`aria-invalid`, `aria-live`) y abre un borrador profesional en el cliente de correo del usuario hacia `rodricgt3@gmail.com`.
 - Para conectar un proveedor de formularios en producción (e.g., [Formspree](https://formspree.io/), [Resend](https://resend.com/) o [Basin](https://usebasin.com/)), basta con añadir la URL del endpoint en el atributo `action` de `<form id="inquiry-form">` en `src/pages/start.astro` con método `POST`.
 
 ## Documentación y Marca

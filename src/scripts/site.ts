@@ -43,7 +43,7 @@ form?.addEventListener('submit', (event) => {
   ].join('\n\n');
   const subject = encodeURIComponent(`Nuevo proyecto DIFERIO — ${data.get('business')}`);
   if (formStatus) formStatus.textContent = 'Se abrirá tu aplicación de correo con un borrador. El sitio no ha enviado ni guardado tus datos.';
-  window.location.href = `mailto:hola@diferio.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:rodricgt3@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
 });
 form?.querySelectorAll('input, select, textarea').forEach(field => field.addEventListener('input', () => {
   field.removeAttribute('aria-invalid');

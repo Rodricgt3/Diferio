@@ -14,7 +14,7 @@ import { resolvePath } from '../utils/paths';
       <span>/</span>
       <span>CONTACTO & PROYECTOS</span>
     </div>
-    <div class="badge-demo">Respuesta en menos de 24 horas hábiles</div>
+    <div class="badge-demo">Cuéntanos el alcance de tu proyecto</div>
   </div>
 
   <section class="start-experience">
@@ -29,7 +29,7 @@ import { resolvePath } from '../utils/paths';
     </div>
 
     <div class="start-card">
-      <form id="inquiry-form" novalidate>
+      <form id="inquiry-form" novalidate data-contact-email={import.meta.env.PUBLIC_CONTACT_EMAIL || "rodricgt3@gmail.com"}>
         <!-- Service Selector Fieldset -->
         <fieldset class="start-fieldset">
           <legend class="start-legend">1. ¿Qué servicio necesita tu negocio? <span>*</span></legend>
@@ -59,10 +59,10 @@ import { resolvePath } from '../utils/paths';
             </div>
 
             <div class="service-chip-option">
-              <input type="radio" id="srv-product" name="service" value="Producto Digital / SaaS MVP" />
-              <label for="srv-product" class="service-chip-label">
-                <strong>🚀 Producto Digital / SaaS</strong>
-                <small>Diseño y desarrollo de MVP para validar y lanzar un nuevo producto.</small>
+              <input type="radio" id="srv-motion" name="service" value="Motion & Film" />
+              <label for="srv-motion" class="service-chip-label">
+                <strong>Motion & Film</strong>
+                <small>Edición, reels, promocionales y motion graphics.</small>
               </label>
             </div>
           </div>
@@ -138,7 +138,7 @@ import { resolvePath } from '../utils/paths';
         <!-- Actions & Honest Dispatch -->
         <div class="inquiry-actions">
           <p class="inquiry-meta-note">
-            <strong>Privacidad garantizada:</strong> Al hacer clic, se abrirá tu aplicación de correo con los datos estructurados para enviarlos a <code>hola@diferio.com</code>. No almacenamos tus datos en servidores de terceros.
+            <strong>Envío desde tu correo:</strong> Al hacer clic, se abrirá tu aplicación de correo con los datos estructurados para enviarlos a <code>{import.meta.env.PUBLIC_CONTACT_EMAIL || "rodricgt3@gmail.com"}</code>. No almacenamos tus datos en servidores de terceros.
           </p>
 
           <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
@@ -171,8 +171,8 @@ import { resolvePath } from '../utils/paths';
       } else if (serviceParam.includes('software')) {
         const el = document.getElementById('srv-software') as HTMLInputElement;
         if (el) el.checked = true;
-      } else if (serviceParam.includes('product') || serviceParam.includes('saas')) {
-        const el = document.getElementById('srv-product') as HTMLInputElement;
+      } else if (serviceParam.includes('motion')) {
+        const el = document.getElementById('srv-motion') as HTMLInputElement;
         if (el) el.checked = true;
       }
     }
@@ -256,10 +256,10 @@ import { resolvePath } from '../utils/paths';
       if (feedback) {
         feedback.style.display = 'block';
         feedback.style.color = '#1b6815';
-        feedback.textContent = 'Abriendo tu cliente de correo con el borrador preparado...';
+        feedback.textContent = 'Borrador preparado. Debes enviarlo desde tu aplicación de correo; este sitio no ha enviado la consulta.';
       }
 
-      window.location.href = `mailto:hola@diferio.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${form.dataset.contactEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
     });
 
     // Copy proposal summary
