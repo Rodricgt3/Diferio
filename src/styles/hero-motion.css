@@ -1,4 +1,5 @@
-.gallery-track .tile{animation:hero-card-rotate 8s ease-in-out infinite;transform-origin:50% 50%}
-.gallery-track .tile:nth-child(2n){animation-delay:-2s}.gallery-track .tile:nth-child(3n){animation-delay:-4s}.gallery-track .tile:nth-child(4n){animation-delay:-6s}
-@keyframes hero-card-rotate{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-8px)}}
-@media(prefers-reduced-motion:reduce){.gallery-track,.gallery-track .tile{animation:none;transform:none}}
+.gallery-track{animation:drift 18s linear infinite!important}
+.gallery-track .tile{transform:translateY(0);transition:transform .3s ease}
+.gallery-track .tile:hover{transform:translateY(-8px)}
+.gallery:hover .gallery-track{animation-play-state:running}
+@media(prefers-reduced-motion:reduce){.gallery-track{animation:none}.gallery-track .tile{transition:none;transform:none}}
