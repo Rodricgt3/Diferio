@@ -1,0 +1,13 @@
+<form class="project-form" id="project-form" novalidate>
+  <div class="form-grid">
+    <label>Tipo de proyecto <span>*</span><select name="type" required><option value="">Selecciona una opción</option><option>Experiencia digital</option><option>Comercio / Shopify</option><option>Software a medida</option><option>Producto digital / SaaS</option><option>Otro</option></select><small class="field-error" aria-live="polite"></small></label>
+    <label>Empresa o marca <span>*</span><input name="business" autocomplete="organization" required minlength="2" placeholder="Nombre de tu negocio" /><small class="field-error" aria-live="polite"></small></label>
+    <label class="field-wide">¿Qué necesitas resolver? <span>*</span><textarea name="description" required minlength="20" rows="4" placeholder="Cuéntanos sobre tu negocio, el reto y qué te gustaría conseguir."></textarea><small class="field-error" aria-live="polite"></small></label>
+    <label>Presupuesto aproximado<select name="budget"><option value="">Por definir</option><option>Menos de $50,000 MXN</option><option>$50,000 – $100,000 MXN</option><option>$100,000 – $250,000 MXN</option><option>Más de $250,000 MXN</option></select></label>
+    <label>Fecha o plazo estimado<input name="timeline" placeholder="Ej. próximo trimestre" /></label>
+    <label>Tu nombre <span>*</span><input name="name" autocomplete="name" required minlength="2" placeholder="Nombre y apellido" /><small class="field-error" aria-live="polite"></small></label>
+    <label>Correo de contacto <span>*</span><input name="email" type="email" autocomplete="email" required placeholder="nombre@empresa.com" /><small class="field-error" aria-live="polite"></small></label>
+  </div>
+  <div class="form-submit"><p>Al enviar, se abrirá un borrador de correo para que revises y envíes la información. El sitio no guarda ni transmite tus datos.</p><button class="button button-signal" type="submit">Preparar correo <span>↗</span></button></div>
+  <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+</form>

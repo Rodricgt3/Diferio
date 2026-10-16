@@ -12,6 +12,44 @@ menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () =>
   menuButton?.setAttribute('aria-expanded', 'false');
   menuButton?.setAttribute('aria-label', 'Open menu');
 }));
+const form = document.querySelector<HTMLFormElement>('#project-form');
+const formStatus = document.querySelector<HTMLElement>('#form-status');
+form?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const fields = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')];
+  let firstInvalid: HTMLElement | undefined;
+  for (const field of fields) {
+    const error = field.parentElement?.querySelector<HTMLElement>('.field-error');
+    const minLength = 'minLength' in field ? field.minLength : 0;
+    const message = field.validity.valid ? '' : field.validity.valueMissing ? 'Este campo es obligatorio.' : field.validity.typeMismatch ? 'Escribe un correo válido.' : field.validity.tooShort ? `Escribe al menos ${minLength} caracteres.` : 'Revisa este campo.';
+    field.setAttribute('aria-invalid', String(Boolean(message)));
+    if (error) error.textContent = message;
+    if (message && !firstInvalid) firstInvalid = field;
+  }
+  if (firstInvalid) {
+    if (formStatus) formStatus.textContent = 'Revisa los campos marcados para continuar.';
+    firstInvalid.focus();
+    return;
+  }
+  const data = new FormData(form);
+  const body = [
+    `Tipo de proyecto: ${data.get('type')}`,
+    `Empresa o marca: ${data.get('business')}`,
+    `Descripción: ${data.get('description')}`,
+    `Presupuesto: ${data.get('budget') || 'Por definir'}`,
+    `Plazo: ${data.get('timeline') || 'Por definir'}`,
+    `Nombre: ${data.get('name')}`,
+    `Correo: ${data.get('email')}`,
+  ].join('\n\n');
+  const subject = encodeURIComponent(`Nuevo proyecto DIFERIO — ${data.get('business')}`);
+  if (formStatus) formStatus.textContent = 'Se abrirá tu aplicación de correo con un borrador. El sitio no ha enviado ni guardado tus datos.';
+  window.location.href = `mailto:hola@diferio.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+});
+form?.querySelectorAll('input, select, textarea').forEach(field => field.addEventListener('input', () => {
+  field.removeAttribute('aria-invalid');
+  const error = field.parentElement?.querySelector<HTMLElement>('.field-error');
+  if (error) error.textContent = '';
+}));
 if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const elements = document.querySelectorAll<HTMLElement>('.reveal');
   const observer = new IntersectionObserver((entries) => {

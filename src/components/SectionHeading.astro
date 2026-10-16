@@ -1,5 +1,5 @@
 ---
-interface Props { eyebrow: string; title: string; id?: string; }
-const { eyebrow, title, id } = Astro.props;
+interface Props { eyebrow: string; title: string; id?: string; number?: string; }
+const { eyebrow, title, id, number } = Astro.props;
 ---
-<div class="section-heading reveal"><span class="eyebrow">{eyebrow}</span><h2 id={id}>{title}</h2></div>
+<div class="section-heading reveal"><div class="section-kicker">{number && <span>{number}</span>}<span class="eyebrow">{eyebrow}</span></div><h2 id={id}>{title}</h2></div>
