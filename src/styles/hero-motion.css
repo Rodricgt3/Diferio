@@ -1,3 +1,14 @@
+/* Tipografía del sistema con apariencia SF Pro en toda la interfaz. */
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.012em;
+}
+
 /* Carrusel Hero: fluidez, espacio para elevación (sin recorte) y desaceleración en hover */
 .gallery {
   padding-top: 18px;

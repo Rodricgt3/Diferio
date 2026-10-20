@@ -1,36 +1,58 @@
-# DIFERIO 2.0 — Creative Technology Company
+# Diferio · Sitio listo para GitHub Pages
 
-Sitio estático de alta conversión construido con **Astro 5** para GitHub Pages. Preserva el layout editorial inspirado en Lewius, su tipografía y ritmo visual, al tiempo que expande la experiencia con tres demostraciones interactivas de servicios de clase mundial y un embudo de conversión optimizado.
+La versión publicada es el rebranding que está en `ChiliCode/`: 19 páginas con planes, precios, módulos, formularios y videos. GitHub Actions coloca su `index.html` en la raíz del sitio. La carpeta `src/` conserva el proyecto Astro anterior y no se utiliza en este despliegue.
 
-## Arquitectura de Rutas
+## Publicar con GitHub Desktop (la app morada)
 
-- `/` — **Homepage Editorial:** Presentación de DIFERIO, galería en movimiento continuo, servicios principales con previsualizaciones interactivas, sistema de casos de estudio técnicos, proceso de 4 etapas, filosofía y preguntas frecuentes.
-- `/commerce/` — **Shopify & E-Commerce Lab:** Demostración interactiva de comercio electrónico premium. Incluye catálogo editorial (Colección *Objets*), PDP interactivo con selector de variantes y cálculo de precio dinámico, bolsa deslizable (*slide cart drawer*), medidor de envío gratis, comparador interactivo UX (Tienda Genérica vs DIFERIO) y arquitectura de checkout 1-page.
-- `/experiences/` — **Web Design & Digital Experiences:** Laboratorio de ingeniería frontend. Cuenta con selector dual (*Modo Editorial* vs *Modo Blueprint / Inspección Técnica* con retícula activa y telemetría de 60fps), controles cinéticos de tipografía (interletraje, grosor de trazo, escala) y tarjetas de narrativa visual.
-- `/software/` — **Custom Software & SaaS:** Demostración interactiva de plataforma de gestión empresarial (*Pulse OS*). Presenta KPIs operativos en vivo, gráfica SVG dinámica con tooltips interactivos, tabla de datos con búsqueda en tiempo real y filtrado por estado de orden.
-- `/start/` — **Embudo de Conversión & Diagnóstico:** Formulario de inicio de proyecto con selector interactivo de disciplina (compatible con preselección vía `?service=commerce|experiences|software|product`), chips de presupuesto, validación accesible rigurosa y doble canal de contacto (copia estructurada al portapapeles y borrador directo en `mailto:`).
+### 1. Abrir el repositorio
 
-## Ejecutar en tu computadora
+1. Abre GitHub Desktop.
+2. Pulsa **File → Add local repository**.
+3. En **Local path**, selecciona `C:\Users\lrodr\OneDrive\Documentos\github gt3\Diferio`.
+4. Pulsa **Add repository**. Si ya aparece, selecciónalo en **Current repository**.
+5. Comprueba que **Current branch** indique `main`.
 
-1. Instala Node.js 22 o superior.
-2. Abre la terminal en este repositorio.
-3. Ejecuta `npm ci` para instalar dependencias.
-4. Ejecuta `npm run dev` para iniciar el servidor de desarrollo.
-5. Ejecuta `npm run build` para validar diagnósticos de TypeScript y compilar la versión de producción estática (`dist/`).
+### 2. Activar Pages una sola vez
 
-## Publicar con GitHub Pages
+1. Abre https://github.com/Rodricgt3/Diferio/settings/pages en tu navegador.
+2. En **Build and deployment → Source**, selecciona **GitHub Actions**.
+3. No necesitas pegar código ni elegir una plantilla.
 
-El workflow `.github/workflows/deploy.yml` compila y publica `dist/` automáticamente en cada push a la rama `main`.
-La ruta base se resuelve dinámicamente mediante `GITHUB_REPOSITORY` en CI (`https://rodricgt3.github.io/Diferio/`), funcionando sin problemas tanto en despliegue remoto como en local.
+### 3. Subir tus cambios
 
-## Formulario de contacto y activación en producción
+1. Regresa a GitHub Desktop, pestaña **Changes**.
+2. Revisa los archivos marcados. Incluye `.github/workflows/deploy.yml`, `scripts/build-pages.cjs` y todos los archivos de `ChiliCode/`.
+3. En **Summary**, escribe `Publicar rebranding Diferio`.
+4. Pulsa **Commit to main**.
+5. Pulsa **Push origin**. El commit guarda en tu computadora; Push lo sube a GitHub.
 
-En conformidad con las directrices de honestidad y privacidad de DIFERIO:
-- El formulario en `/start/` no almacena datos en bases de datos externas de terceros sin consentimiento explícito.
-- Valida los campos en el cliente con accesibilidad completa (`aria-invalid`, `aria-live`) y abre un borrador profesional en el cliente de correo del usuario hacia `rodricgt3@gmail.com`.
-- Para conectar un proveedor de formularios en producción (e.g., [Formspree](https://formspree.io/), [Resend](https://resend.com/) o [Basin](https://usebasin.com/)), basta con añadir la URL del endpoint en el atributo `action` de `<form id="inquiry-form">` en `src/pages/start.astro` con método `POST`.
+### 4. Comprobar la publicación
 
-## Documentación y Marca
+1. Abre https://github.com/Rodricgt3/Diferio/actions.
+2. Abre **Publicar Diferio en GitHub Pages** y espera a que termine con una marca verde.
+3. Abre https://rodricgt3.github.io/Diferio/.
+4. Si ves una versión anterior, pulsa **Ctrl + F5**.
 
-- [Sistema de marca DIFERIO](docs/diferio-brand-system.md)
-- [Auditoría y Plan DIFERIO 2.0](docs/migration-audit.md)
+Cada actualización futura requiere los pasos **Commit to main → Push origin**. GitHub vuelve a publicar automáticamente. Si activaste Pages después del push, entra en **Actions → Publicar Diferio en GitHub Pages → Run workflow → main → Run workflow**.
+
+## Qué se publica
+
+El workflow prepara `_site/` sin instalar dependencias y solo incluye los HTML, CSS, imágenes, videos y scripts que usa la web. Excluye respaldos, documentación, scripts de mantenimiento y el proyecto Astro. No necesitas instalar Node ni ejecutar comandos para publicar desde GitHub Desktop.
+
+Los nombres de archivo originales, como `artesanias.html`, se conservan para mantener los enlaces. Los enlaces de fidelización se generan con el dominio y la carpeta donde se aloje la web, sin depender de la dirección antigua de ChiliCode.
+
+## Vista previa opcional para desarrollo
+
+Con Node instalado, ejecuta `npm run preview:pages` y abre http://127.0.0.1:4322. Para comprobar el paquete de publicación ejecuta `npm run build:pages`.
+
+## Servicios conectados
+
+GitHub Pages aloja la web estática mediante HTTPS. Fidelización sigue usando el Firebase existente; los formularios usan sus servicios externos existentes. El despliegue no migra esas cuentas ni configura sus reglas de acceso. La publicación está preparada y el paquete fue validado localmente; no se han probado envíos reales de formularios ni escrituras en Firebase.
+
+## Originales y documentación
+
+- `backups/chilicode-original-2026-10-20.zip`: respaldo local anterior al rebranding, excluido de Git para no publicarlo.
+- `ChiliCode/REBRANDING.md`: cambios de identidad.
+- `docs/astro-original-readme.md`: documentación del proyecto Astro conservado.
+
+Referencia oficial: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
