@@ -191,9 +191,13 @@ const concepts = [
         <p>Ordinary isn't enough.</p>
         <div class="gallery" aria-label="Exploraciones gráficas originales">
           <div class="gallery-track">
-            {[...heroGalleryItems, ...heroGalleryItems].map((item, i) => (
-              <div class={`tile tile-${i % 4} tile-has-image`}>
-                {(item.video || heroVideoSources[i % heroVideoSources.length]) ? <video class="tile-img" autoplay muted loop playsinline preload="metadata" aria-label={item.name}><source src={item.video || heroVideoSources[i % heroVideoSources.length]} type="video/mp4" /></video> : <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />}
+            {[0, 1].map((copy) => (
+              <div class="gallery-group" aria-hidden={copy === 1 ? 'true' : undefined}>
+                {heroGalleryItems.map((item, i) => (
+                  <div class={`tile tile-${i % 4} tile-has-image`}>
+                    {(item.video || heroVideoSources[i % heroVideoSources.length]) ? <video class="tile-img" autoplay muted loop playsinline preload="metadata" aria-label={item.name}><source src={item.video || heroVideoSources[i % heroVideoSources.length]} type="video/mp4" /></video> : <img src={item.image} alt={item.name} class="tile-img" loading="lazy" />}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
