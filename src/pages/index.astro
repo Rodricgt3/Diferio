@@ -335,6 +335,18 @@ const concepts = [
       card.hidden = !visible;
     });
   }));
+
+  const gallery = document.querySelector<HTMLElement>('.gallery');
+  const galleryTrack = document.querySelector<HTMLElement>('.gallery-track');
+  if (gallery && galleryTrack) {
+    const setGallerySpeed = (speed: number) => {
+      galleryTrack.getAnimations().forEach(animation => {
+        animation.updatePlaybackRate(speed);
+      });
+    };
+    gallery.addEventListener('pointerenter', () => setGallerySpeed(0.3));
+    gallery.addEventListener('pointerleave', () => setGallerySpeed(1));
+  }
 </script>
 </body>
 </html>

@@ -73,9 +73,8 @@
   transform: scale(1.08);
 }
 
-/* Al pasar el mouse por el carrusel, se ralentiza suavemente la rotación; al quitarlo vuelve a velocidad normal */
+/* La velocidad se ajusta con Web Animations API para conservar la posición exacta al pasar el mouse. */
 .gallery:hover .gallery-track {
-  animation-duration: 60s !important;
   animation-play-state: running !important;
 }
 
