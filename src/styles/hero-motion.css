@@ -92,9 +92,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gallery-track {
-    animation: none !important;
-  }
   .gallery-track .tile {
     transition: none;
     transform: none;
